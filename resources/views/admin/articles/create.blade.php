@@ -6,7 +6,7 @@
 
     <h1 class="ui header">{{trans('admin/titles.articles.create')}}</h1>
     <div class="ui form">
-      {!! Form::open(['route' => 'articleStore']) !!}
+      {!! Form::open(['action' => '\App\Http\Controllers\Admin\ArticlesController@store']) !!}
         <div class="ui grid">
           <div class="two column row">
             <div class="twelve wide column">

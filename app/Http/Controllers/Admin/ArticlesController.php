@@ -74,8 +74,6 @@ class ArticlesController extends Controller
     }
     $article->name = $request->input('name');
     $article->published_at = $request->input('published_at');
-    $article->auto_publish = $article->published_at <= \Carbon\Carbon::now();
-    $article->force_publish != $article->published_at <= \Carbon\Carbon::now();
     $article->content = $request->input('content');
     $article->excerpt = $request->input('content');
     $article->save();

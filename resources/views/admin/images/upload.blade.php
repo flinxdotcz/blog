@@ -3,7 +3,7 @@
     {{trans('admin/modals.images.upload.header')}}
   </div>
   <div class="content">
-    {!! Form::open([ 'route' => [ 'imageStore' ], 'files' => true, 'enctype' => 'multipart/form-data', 'class' => 'dropzone', 'id' => 'image-upload' ]) !!}
+    {!! Form::open(['action' => '\App\Http\Controllers\Admin\ImagesController@store', 'files' => true, 'enctype' => 'multipart/form-data', 'class' => 'dropzone', 'id' => 'image-upload' ]) !!}
       {!! Form::hidden('image-url', false, ['id' => 'image-url']) !!}
     {!! Form::close() !!}
     @if (Auth::user()->images)

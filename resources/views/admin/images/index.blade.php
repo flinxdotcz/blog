@@ -29,7 +29,7 @@
                 </div>
               @endif
               @if ($image->avatars->count())
-                <div class="right floated avatars">
+                <div class="left floated avatars">
                   <a href="{{action('\App\Http\Controllers\Admin\UsersController@show', ['id' => $image->avatars->first()->id])}}" class="ui basic black label">
                     <i class="icon smile"></i>
                     {{trans('admin/contents.images.index.avatars')}}
@@ -39,6 +39,8 @@
                   </a>
                 </div>
               @endif
+            </div>
+            <div class="content">
               @unless (Auth::user()->id === $image->user->id)
                 <div class="author">
                   <i class="icon user"></i> {{$image->user->name}}

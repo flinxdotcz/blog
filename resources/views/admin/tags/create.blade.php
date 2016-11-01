@@ -6,7 +6,7 @@
 
     <h1 class="ui header">{{trans('admin/titles.tags.create')}}</h1>
     <div class="ui form">
-      {!! Form::open(['route' => 'tagCreate']) !!}
+      {!! Form::open(['action' => '\App\Http\Controllers\Admin\TagsController@store']) !!}
         <div class="field">
           {!! Form::label('name', trans('admin/forms.tags.create.name')) !!}
           {!! Form::text('name', null) !!}

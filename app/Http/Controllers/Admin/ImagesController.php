@@ -12,10 +12,10 @@ use App\Image;
 class ImagesController extends Controller
 {
   public function index() {
-    if (Auth::user()->role == 'admsin') {
-      $images = Image::all()->paginate(10);
+    if (Auth::user()->hasRole('admin')) {
+      $images = Image::paginate(8);
     } else {
-      $images = Auth::user()->images()->paginate(16);
+      $images = Auth::user()->images()->paginate(8);
     }
     return view('admin/images.index', compact('images'));
   }

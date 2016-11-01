@@ -34,31 +34,29 @@ Route::group([
   // Images
   Route::get('images', 'ImagesController@index');
   Route::get('image/new', 'ImagesController@create');
-  Route::post('image/upload', 'ImagesController@store')->name('imageStore');
+  Route::post('image/upload', 'ImagesController@store');
   Route::delete('image/{id}', 'ImagesController@destroy')->middleware('restricted:admin');
   // Users
   Route::get('users', 'UsersController@index');
+  Route::post('profile', 'UsersController@store')->middleware('restricted:admin');
   Route::get('profile/{id}', 'UsersController@show');
   Route::get('profile/{id}/edit', 'UsersController@edit')->middleware('restricted:admin');
-  Route::put('profile/{id}/edit', 'UsersController@store')->middleware('restricted:admin');
-  Route::delete('profile/{id}', 'UsersController@destroy')->name('userDestroy')->middleware('restricted:admin,users');
+  Route::delete('profile/{id}', 'UsersController@destroy')->middleware('restricted:admin,users');
   // Tags
   Route::get('tags', 'TagsController@index');
   Route::get('tag/create', 'TagsController@create');
-  Route::post('tag/create', 'TagsController@store')->name('tagCreate');
+  Route::post('tag', 'TagsController@store');
   Route::get('tag/{id}', 'TagsController@show');
   Route::get('tag/{id}/edit', 'TagsController@edit');
-  Route::put('tag/{id}/edit', 'TagsController@store');
-  Route::delete('tag/{id}', 'TagsController@destroy')->name('tagDestroy')->middleware('restricted:admin');
+  Route::delete('tag/{id}', 'TagsController@destroy')->middleware('restricted:admin,tags');
   // Articles
   Route::get('articles', 'ArticlesController@index');
   Route::get('article/create', 'ArticlesController@create');
-  Route::post('article/create', 'ArticlesController@store')->name('articleStore');
+  Route::post('article', 'ArticlesController@store');
   Route::get('article/{id}', 'ArticlesController@show');
   Route::get('article/{id}/edit', 'ArticlesController@edit');
-  Route::put('article/{id}/edit', 'ArticlesController@store');
   Route::patch('article/{id}', 'ArticlesController@update');
-  Route::delete('article/{id}', 'ArticlesController@destroy')->name('articleDestroy')->middleware('restricted:admin,articles');
+  Route::delete('article/{id}', 'ArticlesController@destroy')->middleware('restricted:admin,articles');
 });
 // Auth routes
 Auth::routes();
