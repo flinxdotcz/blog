@@ -2,7 +2,10 @@
 
 return [
   'errors' => [
-    'message' => 'There was a problem with submission!'
+    'message' => 'There was a problem with submission!',
+    'unauthorized' => 'You are not allowed to perform such action.',
+    'deleting_admin' => 'You cannot delete another admin user.',
+    'deleting_self' => 'You cannot delete yourself.'
   ],
   'users' => [
     'edit' => [

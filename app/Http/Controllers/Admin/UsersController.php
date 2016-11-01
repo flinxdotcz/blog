@@ -62,9 +62,6 @@ class UsersController extends Controller
   }
 
   public function destroy($id) {
-    if (\Auth::user()->id == $id) {
-      return back()->with('alert', 'warning|'.trans('admin/forms.users.delete.error'));
-    }
     User::destroy($id);
     return redirect()->action('\App\Http\Controllers\Admin\UsersController@index')->with('alert', 'success|'.trans('admin/forms.users.delete.success'));
   }

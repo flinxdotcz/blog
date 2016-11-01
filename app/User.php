@@ -31,14 +31,6 @@ class User extends Authenticatable
       return $this->role->name == $role;
     }
 
-    public function isOwner($id) {
-      if ($this->articles->find($id)) {
-        return true;
-      } else {
-        return false;
-      }
-    }
-
     public function role() {
       return $this->belongsTo('App\Role');
     }
