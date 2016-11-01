@@ -44,6 +44,14 @@ class ArticlesController extends Controller
     return view('admin.articles.create', compact('tags', 'richEditor'));
   }
 
+  public function update(Request $request, $id) {
+    $article = Article::findOrFail($id);
+    $article->fill($request->all());
+    // dd($request->all());
+    $article->save();
+    return redirect()->action('\App\Http\Controllers\Admin\ArticlesController@show', ['id' => $article->id])->with('alert', 'success|'.trans('admin/forms.articles.update.success'));
+  }
+
   public function store(Request $request, $id = null) {
     $this->validate($request, [
       'name' => 'required|min:5|max:65',
@@ -65,6 +73,9 @@ class ArticlesController extends Controller
       $article->thumbnail = $request->input('image-reference');
     }
     $article->name = $request->input('name');
+    $article->published_at = $request->input('published_at');
+    $article->auto_publish = $article->published_at <= \Carbon\Carbon::now();
+    $article->force_publish != $article->published_at <= \Carbon\Carbon::now();
     $article->content = $request->input('content');
     $article->excerpt = $request->input('content');
     $article->save();

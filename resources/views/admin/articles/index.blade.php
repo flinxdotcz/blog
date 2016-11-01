@@ -14,6 +14,11 @@
             </a>
           </td>
           <td>
+            <a href="{{action('\App\Http\Controllers\Admin\ArticlesController@index', ['sortBy' => 'published_at', 'desc' => $desc])}}">
+              {{ trans('admin/contents.articles.table.published_at') }}
+            </a>
+          </td>
+          <td>
             <a href="{{action('\App\Http\Controllers\Admin\ArticlesController@index', ['sortBy' => 'created_at', 'desc' => $desc])}}">
               {{ trans('admin/contents.articles.table.created_at') }}
             </a>
@@ -42,6 +47,15 @@
                   </div>
                 </div>
               </h4>
+            </td>
+            <td>
+              {{$article->published_at->toFormattedDateString()}}
+              <br>
+              @unless ($article->isPublished())
+                <div class="ui mini purple basic label">
+                  <i class="icon hide"></i>{{trans('admin/contents.articles.show.unpublished')}}
+                </div>
+              @endunless
             </td>
             <td>
               {{$article->created_at->toFormattedDateString()}}

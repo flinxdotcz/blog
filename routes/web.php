@@ -57,6 +57,7 @@ Route::group([
   Route::get('article/{id}', 'ArticlesController@show');
   Route::get('article/{id}/edit', 'ArticlesController@edit');
   Route::put('article/{id}/edit', 'ArticlesController@store');
+  Route::patch('article/{id}', 'ArticlesController@update');
   Route::delete('article/{id}', 'ArticlesController@destroy')->name('articleDestroy')->middleware('role:admin');
 });
 // Auth routes

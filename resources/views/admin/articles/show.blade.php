@@ -6,14 +6,18 @@
 
     <div class="ui grid">
       <div class="two column row">
-        <div class="nine wide column">
-          <h1 class="ui header">{{$article->name}}</h1>
+        <div class="ten wide column">
+          <h1 class="ui header">
+            {{$article->name}}
+          </h1>
+          @unless ($article->isPublished())
+            <div class="ui purple basic label">
+              <i class="icon hide"></i>{{trans('admin/contents.articles.show.unpublished')}}
+            </div>
+          @endunless
         </div>
-        <div class="five wide right aligned right floated column">
+        <div class="six wide right aligned right floated column">
           <div class="ui buttons">
-            <a href="{{action('\App\Http\Controllers\Admin\ArticlesController@edit', ['id' => $article->id])}}" class="ui green basic button">
-              <i class="icon checkmark"></i>{{trans('admin/contents.articles.show.publish')}}
-            </a>
             <a href="{{action('\App\Http\Controllers\Admin\ArticlesController@edit', ['id' => $article->id])}}" class="ui blue basic button">
               <i class="icon paint brush"></i>{{trans('admin/contents.articles.show.edit')}}
             </a>
@@ -77,6 +81,12 @@
               <div class="content">
                 <i class="icon arrow up"></i><strong>{{trans('admin/contents.articles.show.created_at')}}: </strong>
                 {{$article->created_at}}
+              </div>
+            </div>
+            <div class="item">
+              <div class="content">
+                <i class="icon check"></i><strong>{{trans('admin/contents.articles.show.published_at')}}: </strong>
+                {{$article->published_at}}
               </div>
             </div>
           </div>

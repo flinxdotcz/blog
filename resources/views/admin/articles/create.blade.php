@@ -18,6 +18,10 @@
                 {!! Form::label('tags', trans('admin/forms.articles.edit.tags')) !!}
                 {!! Form::select('tags[]', $tags, null, ['class' => 'ui fluid search dropdown', 'multiple' => true]) !!}
               </div>
+              <div class="field">
+                {!! Form::label('published_at', trans('admin/forms.articles.edit.published_at')) !!}
+                {!! Form::date('published_at', Carbon\Carbon::now()) !!}
+              </div>
             </div>
             <div class="four wide center aligned column">
               <div class="thumbnail hidden" style="display: none;">

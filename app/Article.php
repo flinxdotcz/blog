@@ -3,12 +3,18 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Article extends Model
 {
   protected $fillable = [
     'name',
-    'content'
+    'content',
+    'published_at'
+  ];
+
+  protected $dates = [
+    'published_at'
   ];
 
   public function setExcerptAttribute($original) {
@@ -25,6 +31,18 @@ class Article extends Model
     }
 
     $this->attributes['excerpt'] = $excerpt;
+  }
+
+  public function scopePublished($query) {
+    return $query->where('published_at', '<=', Carbon::now());
+  }
+
+  public function scopeUnpublished($query) {
+    return $query->where('published_at', '>=', Carbon::now());
+  }
+
+  public function isPublished() {
+    return $this->attributes['published_at'] <= Carbon::now();
   }
 
   public function thumbnailImage() {

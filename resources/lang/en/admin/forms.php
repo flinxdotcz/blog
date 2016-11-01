@@ -24,6 +24,7 @@ return [
     'create' => [
       'name' => 'Title',
       'tags' => 'Tags',
+      'published_at' => 'Auto Publish',
       'content' => 'Content',
       'submit' => 'Create Article',
       'status' => 'Article successfully created.',
@@ -33,6 +34,7 @@ return [
       'id' => 'ID',
       'name' => 'Title',
       'tags' => 'Tags',
+      'published_at' => 'Auto Publish',
       'content' => 'Content',
       'submit' => 'Update Article',
       'status' => 'Article successfully updated.',
@@ -41,6 +43,9 @@ return [
     'delete' => [
       'success' => 'Article successfully deleted.',
       'error' => 'Cannot delete this article.'
+    ],
+    'update' => [
+      'success' => 'Article successfully updated.'
     ]
   ],
   'tags' => [

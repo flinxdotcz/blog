@@ -30,7 +30,7 @@
     @endif
   </div>
   @if (isset($delete) && $delete === true)
-    {{ Form::open(['method' => 'DELETE', 'action' => [$action, $id], 'id' => 'deleteForm']) }}
-    {{ Form::close() }}
+    {!! Form::open(['method' => 'DELETE', 'action' => [$action, $id], 'id' => 'deleteForm']) !!}
+    {!! Form::close() !!}
   @endif
 </div>

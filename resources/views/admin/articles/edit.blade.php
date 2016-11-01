@@ -22,6 +22,10 @@
                 {!! Form::label('tags', trans('admin/forms.articles.edit.tags')) !!}
                 {!! Form::select('tags[]', $tags, $article->tags->pluck('id')->toArray(), ['class' => 'ui fluid search dropdown', 'multiple' => true]) !!}
               </div>
+              <div class="field">
+                {!! Form::label('published_at', trans('admin/forms.articles.edit.published_at')) !!}
+                {!! Form::date('published_at', $article->published_at) !!}
+              </div>
             </div>
             <div class="four wide center aligned column">
               <div class="thumbnail">

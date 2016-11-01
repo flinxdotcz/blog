@@ -1,4 +1,4 @@
-@if (isset($imageUpload))
+@if (isset($richEditor))
   <!-- TinyMCE -->
   <script src="/js/vendor/tinymce/tinymce.min.js"></script>
 @endif
