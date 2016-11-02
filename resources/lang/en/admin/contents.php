@@ -20,7 +20,9 @@ return [
       'draft' => 'DRAFT'
     ],
     'table' => [
+      'id' => 'ID',
       'name' => 'Title',
+      'author' => 'Author',
       'excerpt' => 'Content Excerpt',
       'created_at' => 'Created',
       'updated_at' => 'Updated',
@@ -38,6 +40,7 @@ return [
       'articles' => 'Articles'
     ],
     'table' => [
+      'id' => 'ID',
       'name' => 'Name',
       'created_at' => 'Created',
       'updated_at' => 'Updated'
@@ -57,6 +60,7 @@ return [
       'articles' => 'Articles'
     ],
     'table' => [
+      'id' => 'ID',
       'name' => 'Name',
       'email' => 'E-mail',
       'username' => 'User Name',

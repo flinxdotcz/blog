@@ -9,6 +9,11 @@
       <thead>
         <tr>
           <td>
+            <a href="{{action('\App\Http\Controllers\Admin\UsersController@index', ['sortBy' => 'id', 'desc' => $desc])}}">
+              {{ trans('admin/contents.users.table.id') }}
+            </a>
+          </td>
+          <td>
             <a href="{{action('\App\Http\Controllers\Admin\UsersController@index', ['sortBy' => 'name', 'desc' => $desc])}}">
               {{ trans('admin/contents.users.table.name') }}
             </a>
@@ -42,6 +47,9 @@
         @foreach ($users as $user)
           <tr id="u-{{$user->id}}">
             <td>
+              {{$user->id}}
+            </td>
+            <td>
               <h4 class="ui image header">
                 @if ($user->avatarImage)
                   <img class="ui avatar image" src="{{$user->avatarImage->url}}" alt="{{$user->avatarImage->name}}" />
@@ -66,10 +74,10 @@
               {{$user->role->name}}
             </td>
             <td>
-              {{$user->created_at->toFormattedDateString()}}
+              {{$user->created_at}}
             </td>
             <td>
-              {{$user->updated_at->toFormattedDateString()}}
+              {{$user->updated_at}}
             </td>
           </tr>
         @endforeach

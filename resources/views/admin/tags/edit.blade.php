@@ -6,7 +6,7 @@
 
     <h1 class="ui header">{{trans('admin/titles.tags.edit')}}: <strong>{{$tag->name}}</strong></h1>
     <div class="ui form">
-      {!! Form::model($tag, ['\App\Http\Controllers\Admin\TagsController@store', 'method' => 'PUT']) !!}
+      {!! Form::model($tag, ['action' => ['\App\Http\Controllers\Admin\TagsController@update', 'id' => $tag->id], 'method' => 'PUT']) !!}
         <div class="field">
           {!! Form::label('id', trans('admin/forms.tags.edit.id')) !!}
           {!! Form::number('id', null, ['disabled' => 'disabled']) !!}

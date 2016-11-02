@@ -6,7 +6,7 @@
 
     <h1 class="ui header">{{trans('admin/titles.articles.edit')}}: <strong>{{$article->name}}</strong></h1>
     <div class="ui form">
-      {!! Form::model($article, ['\App\Http\Controllers\Admin\ArticlesController@store', 'method' => 'PUT']) !!}
+      {!! Form::model($article, ['action' => ['\App\Http\Controllers\Admin\ArticlesController@update', 'id' => $article->id], 'method' => 'PUT']) !!}
         <div class="ui grid">
           <div class="two column row">
             <div class="twelve wide column">

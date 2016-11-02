@@ -40,7 +40,7 @@ class UsersController extends Controller
     return view('admin.users.edit', compact('user', 'imageUpload'));
   }
 
-  public function store(Request $request, $id) {
+  public function update(Request $request, $id) {
     $this->validate($request, [
       'name' => 'required|min:5|max:30',
       'username' => 'min:5|max:15',
@@ -51,12 +51,7 @@ class UsersController extends Controller
     if (!empty($request->input('image-reference'))) {
       $user->avatar = $request->input('image-reference');
     }
-    if (!empty($request->input('newPassword'))) {
-      $user->password = bcrypt($request->input('newPassword'));
-    }
-    $user->name = $request->input('name');
-    $user->username = $request->input('username');
-    $user->updated_at = \Carbon\Carbon::now();
+    $user->fill($request->all());
     $user->save();
     return redirect()->action('\App\Http\Controllers\Admin\UsersController@show', ['id' => $user->id])->with('alert', 'success|'.trans('admin/forms.users.edit.status'));
   }

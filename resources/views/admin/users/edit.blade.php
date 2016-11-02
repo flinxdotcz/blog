@@ -9,7 +9,7 @@
       <div class="two column row">
         <div class="thirteen wide column">
           <div class="ui form">
-            {!! Form::model($user, ['\App\Http\Controllers\Admin\UsersController@store', 'method' => 'PUT']) !!}
+            {!! Form::model($user, ['action' => ['\App\Http\Controllers\Admin\UsersController@update', 'id' => $user->id], 'method' => 'PUT']) !!}
               <div class="field">
                 {!! Form::label('id', trans('admin/forms.users.edit.id')) !!}
                 {!! Form::number('id', null, ['disabled' => 'disabled']) !!}

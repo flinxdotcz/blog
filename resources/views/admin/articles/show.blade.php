@@ -48,7 +48,7 @@
             <div class="item">
               <div class="content">
                 <i class="icon user"></i><strong>{{trans('admin/contents.articles.show.author')}}: </strong>
-                <a class="ui black basic image label" href="{{action('\App\Http\Controllers\Admin\UsersController@show', ['id' => $article->user->id])}}">
+                <a class="ui blue basic image label" href="{{action('\App\Http\Controllers\Admin\UsersController@show', ['id' => $article->user->id])}}">
                   @if ($article->user->avatarImage)
                     <img src="{{$article->user->avatarImage->url}}">
                   @endif
@@ -62,7 +62,7 @@
                 <i class="icon tags"></i><strong>{{trans('admin/contents.articles.show.tags')}}: </strong>
                 @if ($article->tags->count())
                   @foreach ($article->tags as $tag)
-                    <a class="ui blue basic label" href="{{action('\App\Http\Controllers\Admin\TagsController@show', ['id' => $tag->id])}}">{{$tag->name}}</a>
+                    <a class="ui black basic label" href="{{action('\App\Http\Controllers\Admin\TagsController@show', ['id' => $tag->id])}}">{{$tag->name}}</a>
                   @endforeach
                 @endif
               </div>

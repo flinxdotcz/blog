@@ -37,23 +37,26 @@ class TagsController extends Controller
     return view('admin.tags.create');
   }
 
-  public function store(Request $request, $id = null) {
+  public function update(Request $request, $id) {
     $this->validate($request, [
       'name' => 'required|min:3|max:15'
     ]);
-    if (is_null($id)) {
-      $tag = new Tag;
-      $tag->created_at = \Carbon\Carbon::now();
-      $tag->updated_at = \Carbon\Carbon::now();
-      $statusMessage = trans('admin/forms.tags.create.status');
-    } else {
-      $tag = Tag::findOrFail($id);
-      $tag->updated_at = \Carbon\Carbon::now();
-      $statusMessage = trans('admin/forms.tags.edit.status');
-    }
+    $tag = Tag::findOrFail($id);
+    $tag->fill($request->all());
+    $tag->save();
+    return redirect()->action('\App\Http\Controllers\Admin\TagsController@show', ['id' => $tag->id])->with('alert', 'success|'.trans('admin/forms.tags.update.success'));
+  }
+
+  public function store(Request $request) {
+    $this->validate($request, [
+      'name' => 'required|min:3|max:15'
+    ]);
+    $tag = new Tag;
+    $tag->created_at = \Carbon\Carbon::now();
+    $tag->updated_at = \Carbon\Carbon::now();
     $tag->name = $request->input('name');
     $tag->save();
-    return redirect()->action('\App\Http\Controllers\Admin\TagsController@show', ['id' => $tag->id])->with('alert', 'success|'.$statusMessage);
+    return redirect()->action('\App\Http\Controllers\Admin\TagsController@show', ['id' => $tag->id])->with('alert', 'success|'.trans('admin/forms.tags.create.status'));
   }
 
   public function destroy($id) {

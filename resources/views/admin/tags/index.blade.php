@@ -9,6 +9,11 @@
       <thead>
         <tr>
           <td>
+            <a href="{{action('\App\Http\Controllers\Admin\TagsController@index', ['sortBy' => 'id', 'desc' => $desc])}}">
+              {{ trans('admin/contents.tags.table.id') }}
+            </a>
+          </td>
+          <td>
             <a href="{{action('\App\Http\Controllers\Admin\TagsController@index', ['sortBy' => 'name', 'desc' => $desc])}}">
               {{ trans('admin/contents.tags.table.name') }}
             </a>
@@ -29,6 +34,9 @@
         @foreach ($tags as $tag)
           <tr id="t-{{$tag->id}}">
             <td>
+              {{$tag->id}}
+            </td>
+            <td>
               <h4 class="ui image header">
                 @if ($tag->avatarImage)
                   <img class="ui mini circular image" src="{{$article->avatarImage->url}}" alt="{{$article->avatarImage->name}}" />
@@ -41,10 +49,10 @@
               </h4>
             </td>
             <td>
-              {{$tag->created_at->toFormattedDateString()}}
+              {{$tag->created_at}}
             </td>
             <td>
-              {{$tag->updated_at->toFormattedDateString()}}
+              {{$tag->updated_at}}
             </td>
           </tr>
         @endforeach

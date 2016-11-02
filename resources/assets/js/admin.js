@@ -10,7 +10,7 @@ $(document).ready(function(){
       .modal('setting', 'transition', 'fade up')
       .modal({
         onApprove: function(){
-          $('.modal').addClass('loading');
+          $('.deleteBtn').addClass('loading');
         }
       })
       .modal('show');
