@@ -11,6 +11,7 @@ return [
       'created_at' => 'Created',
       'updated_at' => 'Updated',
       'published_at' => 'Auto Publish',
+      'thumbnail' => 'Thumbnail',
       'publish' => 'Publish Now',
       'unpublish' => 'Unpublish',
       'edit' => 'Edit',
