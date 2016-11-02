@@ -21,16 +21,6 @@ Route::group([
   'prefix' => 'admin',
   'namespace' => 'Admin'
   ], function() {
-  // // Dashboard
-  // Route::get('dashboard', function() {
-  //   $users = \App\User::all();
-  //   $articles = \App\Article::all();
-  //   $tags = \App\Tag::all();
-  //   return view('admin.dashboard', compact('users','tags','articles'));
-  // });
-  Route::get('/', function() {
-    return redirect('admin/users');
-  });
   // Images
   Route::get('images', 'ImagesController@index');
   Route::get('image/new', 'ImagesController@create');
