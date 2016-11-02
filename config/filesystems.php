@@ -56,10 +56,10 @@ return [
 
         's3' => [
             'driver' => 's3',
-            'key' => 'your-key',
-            'secret' => 'your-secret',
-            'region' => 'your-region',
-            'bucket' => 'your-bucket',
+            'key' => env('AWSS3_KEY', 'key'),
+            'secret' => env('AWSS3_SECRET', 'secret'),
+            'region' => env('AWSS3_REGION', 'region'),
+            'bucket' => env('AWSS3_BUCKET', 'bucket'),
         ],
 
         'image' => [
