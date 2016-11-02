@@ -62,9 +62,16 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        if (!User::first()) {
+          $roleId = 1;
+        } else {
+          $roleId = 2;
+        }
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'role_id' => $roleId,
             'password' => bcrypt($data['password']),
         ]);
     }
