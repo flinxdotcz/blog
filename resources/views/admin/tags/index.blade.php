@@ -2,10 +2,10 @@
 
 @section('content')
 
-  <div class="ui container">
+  <div class="container-fluid">
 
-    <h1 class="ui header">{{trans('admin/titles.tags.index')}}</h1>
-    <table class="ui very basic table">
+    <h1>{{trans('admin/titles.tags.index')}}</h1>
+    <table class="table">
       <thead>
         <tr>
           <td>
@@ -37,15 +37,15 @@
               {{$tag->id}}
             </td>
             <td>
-              <h4 class="ui image header">
+              <h4>
                 @if ($tag->avatarImage)
-                  <img class="ui mini circular image" src="{{$article->avatarImage->url}}" alt="{{$article->avatarImage->name}}" />
+                  <div class="thumbnail">
+                    <img src="{{$article->thumbnailImage->url}}" alt="{{$article->name}}" />
+                  </div>
                 @endif
-                <div class="content">
-                  <a href="{{action('\App\Http\Controllers\Admin\TagsController@show', ['id' => $tag->id])}}">
-                    {{$tag->name}}
-                  </a>
-                </div>
+                <a href="{{action('\App\Http\Controllers\Admin\TagsController@show', ['id' => $tag->id])}}">
+                  {{$tag->name}}
+                </a>
               </h4>
             </td>
             <td>

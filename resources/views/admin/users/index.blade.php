@@ -2,10 +2,10 @@
 
 @section('content')
 
-  <div class="ui container">
+  <div class="container-fluid">
 
-    <h1 class="ui header">{{trans('admin/titles.users.index')}}</h1>
-    <table class="ui very basic table">
+    <h1>{{trans('admin/titles.users.index')}}</h1>
+    <table class="table">
       <thead>
         <tr>
           <td>
@@ -50,18 +50,10 @@
               {{$user->id}}
             </td>
             <td>
-              <h4 class="ui image header">
-                @if ($user->avatarImage)
-                  <img class="ui avatar image" src="{{$user->avatarImage->url}}" alt="{{$user->avatarImage->name}}" />
-                @endif
-                <div class="content">
-                  <a href="{{action('\App\Http\Controllers\Admin\UsersController@show', ['id' => $user->id])}}">
-                    {{$user->name}}
-                  </a>
-                  <div class="sub header">
-                    Lorem ipsum
-                  </div>
-                </div>
+              <h4>
+                <a href="{{action('\App\Http\Controllers\Admin\UsersController@show', ['id' => $user->id])}}">
+                  {{$user->name}}
+                </a>
               </h4>
             </td>
             <td>

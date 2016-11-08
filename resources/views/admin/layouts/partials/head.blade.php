@@ -7,10 +7,10 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'blog.app') }}</title>
-    <!-- Styles -->
-    <link href="/css/app.css" rel="stylesheet">
-    <!-- Semantic UI -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.css" media="screen">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Custom Stylesheet -->
+    <link href="/css/admin.css" rel="stylesheet">
     <!-- Scripts -->
     <script>
     window.Laravel = <?php echo json_encode([

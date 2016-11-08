@@ -1,36 +1,45 @@
-<div class="ui modal">
-  <div class="header">{{$header}}</div>
-  <div class="content">
-    <p>
-      {{$message}}
-    </p>
+<div class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">{{$header}}</h4>
+      </div>
+      <div class="modal-body">
+        <p>
+          {{$message}}
+        </p>
+      </div>
+      <div class="modal-footer">
+        <div class="actions">
+          @if (!isset($approve))
+            <div class="ui approve button">
+              Ok
+            </div>
+          @elseif (isset($delete) && $delete === true)
+            <button type="button" class="btn btn-danger" onclick="document.getElementById('deleteForm').submit();">
+             {{$approve}}
+            </button>
+          @else
+            <button type="button" class="btn btn-success dismiss-modal">
+              {{$approve}}
+            </button>
+          @endif
+          @if (!isset($cancel))
+            <button type="button" class="btn btn-default dismiss-modal">
+              Cancel
+            </button>
+          @else
+            <button type="button" class="btn btn-default dismiss-modal">
+              {{$cancel}}
+            </button>
+          @endif
+        </div>
+        @if (isset($delete) && $delete === true)
+          {!! Form::open(['method' => 'DELETE', 'action' => [$action, $id], 'id' => 'deleteForm']) !!}
+          {!! Form::close() !!}
+        @endif
+      </div>
+    </div>
   </div>
-  <div class="actions">
-    @if (!isset($approve))
-      <div class="ui approve button">
-        Ok
-      </div>
-    @elseif (isset($delete) && $delete === true)
-      <button type="button" class="ui approve negative button" onclick="document.getElementById('deleteForm').submit();">
-       {{$approve}}
-      </button>
-    @else
-      <div class="ui approve button">
-        {{$approve}}
-      </div>
-    @endif
-    @if (!isset($cancel))
-      <div class="ui cancel button">
-        Cancel
-      </div>
-    @else
-      <div class="ui cancel button">
-        {{$cancel}}
-      </div>
-    @endif
-  </div>
-  @if (isset($delete) && $delete === true)
-    {!! Form::open(['method' => 'DELETE', 'action' => [$action, $id], 'id' => 'deleteForm']) !!}
-    {!! Form::close() !!}
-  @endif
 </div>

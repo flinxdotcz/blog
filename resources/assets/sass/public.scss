@@ -19,6 +19,12 @@ img {
   height: auto;
   padding: 15px 15px;
 }
+#navbar-admin {
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #333;
+}
 .navigation-wrapper {
   position: relative;
   width: 100%;
@@ -82,6 +88,9 @@ img {
     display: none;
     -webkit-perspective: 1000;
     -webkit-backface-visibility: hidden;
+    &.profile {
+      margin-left: 130px;
+    }
     .title {
       text-shadow: 0 0 .05px black;
     }

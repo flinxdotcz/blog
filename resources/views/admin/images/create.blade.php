@@ -2,9 +2,9 @@
 
 @section('content')
 
-  <div class="ui container">
+  <div class="container-fluid">
 
-    <h1 class="ui header">{{trans('admin/titles.images.create')}}</h1>
+    <h1>{{trans('admin/titles.images.create')}}</h1>
     <div id="newImage"></div>
     @include('admin.images.upload')
 

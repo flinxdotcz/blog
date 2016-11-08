@@ -22,7 +22,8 @@ class ArticlesController extends Controller
     } else {
       $article = Article::findOrFail($id)->published();
     }
-    return view('article-single', compact('article','ajax'));
+    $title = $article->name;
+    return view('article-single', compact('title','article','ajax'));
   }
 
   public function addHit(Request $request, $id) {

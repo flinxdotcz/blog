@@ -13,6 +13,7 @@ class UsersController extends Controller
   public function show($id) {
     $ajax = true;
     $user = User::findOrFail($id);
-    return view('profile', compact('user', 'ajax'));
+    $title = $user->name;
+    return view('profile', compact('title', 'user', 'ajax'));
   }
 }

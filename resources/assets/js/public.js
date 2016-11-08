@@ -16,8 +16,15 @@ $(document).ready(function() {
   thumbnail.fadeIn(1000);
   avatar.fadeIn(1000);
 
+  avatar.css('bottom',(header.height() - avatar.height())/2+'px');
+  headerContent.css('bottom',(header.height() - headerContent.height())/2+'px');
+  thumbnail.css({
+    'margin-top': '-'+(thumbnail.height() - header.height())/2+'px',
+    'margin-bottom': '-'+(thumbnail.height() - header.height())/2+'px'
+  });
+
   win.on('resize load', function() {
-    avatar.css('bottom',(header.height() - avatar.height())/2+headerContent.height()+'px');
+    avatar.css('bottom',(header.height() - avatar.height())/2+'px');
     headerContent.css('bottom',(header.height() - headerContent.height())/2+'px');
     thumbnail.css({
       'margin-top': '-'+(thumbnail.height() - header.height())/2+'px',

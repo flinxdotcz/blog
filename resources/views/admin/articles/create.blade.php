@@ -2,51 +2,46 @@
 
 @section('content')
 
-  <div class="ui container">
+  <div class="container-fluid">
 
-    <h1 class="ui header">{{trans('admin/titles.articles.create')}}</h1>
-    <div class="ui form">
-      {!! Form::open(['action' => '\App\Http\Controllers\Admin\ArticlesController@store']) !!}
-        <div class="ui grid">
-          <div class="two column row">
-            <div class="twelve wide column">
-              <div class="field">
-                {!! Form::label('name', trans('admin/forms.articles.create.name')) !!}
-                {!! Form::text('name', null) !!}
-              </div>
-              <div class="field">
-                {!! Form::label('tags', trans('admin/forms.articles.edit.tags')) !!}
-                {!! Form::select('tags[]', $tags, null, ['class' => 'ui fluid search dropdown', 'multiple' => true]) !!}
-              </div>
-              <div class="field">
-                {!! Form::label('published_at', trans('admin/forms.articles.edit.published_at')) !!}
-                {!! Form::date('published_at', Carbon\Carbon::now()) !!}
-              </div>
-            </div>
-            <div class="four wide center aligned column">
-              <div class="thumbnail hidden" style="display: none;">
-                <img class="ui medium image currentImage" src="" alt="" />
-                <div class="ui hidden divider"></div>
-              </div>
-              <a href="#" class="ui primary basic large button" type="button" id="imageUpload">
-                {{trans('admin/forms.articles.create.image')}}
-              </a>
-            </div>
+    <h1>{{trans('admin/titles.articles.create')}}</h1>
+    {!! Form::open(['action' => '\App\Http\Controllers\Admin\ArticlesController@store']) !!}
+      <div class="row">
+        <div class="col-sm-8">
+          <div class="form-group">
+            {!! Form::label('name', trans('admin/forms.articles.create.name')) !!}
+            {!! Form::text('name', null, ['class' => 'form-control']) !!}
           </div>
-          <div class="one column row">
-            <div class="column">
-              <div class="field">
-                {!! Form::label('content', trans('admin/forms.articles.create.content')) !!}
-                {!! Form::textarea('content', null, ['id' => 'richedit']) !!}
-              </div>
-              {!! Form::hidden('image-reference', null, ['id' => 'image-reference']) !!}
-              {!! Form::submit(trans('admin/forms.articles.create.submit'), ['class' => 'ui basic green button submitBtn']) !!}
-            </div>
+          <div class="form-group">
+            {!! Form::label('tags', trans('admin/forms.articles.edit.tags')) !!}
+            {!! Form::select('tags[]', $tags, null, ['class' => 'form-control', 'multiple' => true]) !!}
+          </div>
+          <div class="form-group">
+            {!! Form::label('published_at', trans('admin/forms.articles.edit.published_at')) !!}
+            {!! Form::date('published_at', Carbon\Carbon::now(), ['class' => 'form-control']) !!}
           </div>
         </div>
-      {!! Form::close() !!}
-      @include('admin.images.upload')
-    </div>
+        <div class="col-sm-4">
+          <div class="thumbnail">
+            <img class="currentImage" src="" alt="" />
+          </div>
+          <a href="#" class="btn btn-default" type="button" id="imageUpload">
+            {{trans('admin/forms.articles.create.image')}}
+          </a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="field">
+            {!! Form::label('content', trans('admin/forms.articles.create.content')) !!}
+            {!! Form::textarea('content', null, ['id' => 'richedit']) !!}
+          </div>
+          {!! Form::hidden('image-reference', null, ['id' => 'image-reference']) !!}
+          {!! Form::submit(trans('admin/forms.articles.create.submit'), ['class' => 'btn btn-success submitBtn']) !!}
+        </div>
+      </div>
+    {!! Form::close() !!}
+    @include('admin.images.upload')
 
   </div>
 

@@ -2,10 +2,10 @@
 
 @section('content')
 
-  <div class="ui container">
+  <div class="container-fluid">
 
-    <h1 class="ui header">{{trans('admin/titles.articles.index')}}</h1>
-    <table class="ui very basic table">
+    <h1>{{trans('admin/titles.articles.index')}}</h1>
+    <table class="table">
       <thead>
         <tr>
           <td>
@@ -45,10 +45,7 @@
               {{$article->id}}
             </td>
             <td>
-              <h4 class="ui image header">
-                @if ($article->avatarImage)
-                  <img class="ui mini circular image" src="{{$article->avatarImage->url}}" alt="{{$article->avatarImage->name}}" />
-                @endif
+              <h4>
                 <div class="content">
                   <a href="{{action('\App\Http\Controllers\Admin\ArticlesController@show', ['id' => $article->id])}}">
                     {{$article->name}}
@@ -60,22 +57,21 @@
               </h4>
             </td>
             <td>
-              <a class="ui blue basic image label" href="{{action('\App\Http\Controllers\Admin\UsersController@show', ['id' => $article->user->id])}}">
+              <a href="#" class="thumbnail avatar">
                 @if ($article->user->avatarImage)
-                  <img src="{{$article->user->avatarImage->url}}">
+                    <img src="{{$article->user->avatarImage->url}}">
                 @endif
-                {{$article->user->name}}
-                <div class="detail">{{$article->user->role->name}}</div>
+                <small>{{$article->user->name}}</small>
               </a>
             </td>
             <td>
-              @unless ($article->isPublished())
-                <div class="ui mini purple basic label">
-                  <i class="icon hide"></i>{{trans('admin/contents.articles.show.unpublished')}}
-                </div>
-              @endunless
-              <br>
               {{$article->published_at}}
+              @unless ($article->isPublished())
+                <br>
+                <span class="label label-info">
+                  {{trans('admin/contents.articles.show.unpublished')}}
+                </span>
+              @endunless
             </td>
             <td>
               {{$article->created_at}}

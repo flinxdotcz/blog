@@ -15,14 +15,16 @@ elixir(mix => {
       proxy: 'horws.app'
     });
     mix.sass('public.scss', 'public/css/public.css');
+    mix.sass('admin.scss', 'public/css/admin.css');
     mix.scripts([
       'vendor/jquery/jquery-3.1.1.min.js',
-      'vendor/semanticui/semantic.min.js',
+      'vendor/bootstrap/bootstrap.min.js',
       'vendor/dropzone/dropzone.js',
       'admin.js'
     ], 'public/js/admin-bundle.js');
     mix.scripts([
       'vendor/jquery/jquery-3.1.1.min.js',
+      'vendor/bootstrap/bootstrap.min.js',
       'public.js'
     ], 'public/js/public-bundle.js');
 });

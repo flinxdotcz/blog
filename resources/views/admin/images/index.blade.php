@@ -2,58 +2,30 @@
 
 @section('content')
 
-  <div class="ui container">
+  <div class="container-fluid">
 
-    <h1 class="ui header">{{trans('admin/titles.images.index')}}</h1>
+    <h1>{{trans('admin/titles.images.index')}}</h1>
     @if ($images->count())
-      <div class="ui two stackable cards">
+      <div class="row">
         @foreach ($images as $image)
-          <div class="card">
-            <div class="image">
+          <div class="col-sm-4">
+            <div class="thumbnail image-block">
               <img src="{{$image->url}}" alt="{{$image->name}}" />
-            </div>
-            <div class="content">
-              <div class="header">
-                {{$image->name}}
-              </div>
-              <div class="ui hidden divider"></div>
-              @if ($image->thumbnails->count())
-                <div class="left floated thumbnails">
-                  <div class="ui basic blue label">
-                    <i class="icon image"></i>
-                    {{trans('admin/contents.images.index.thumbnails')}}
-                    <div class="detail">
-                      {{$image->thumbnails->count()}}
-                    </div>
+              <div class="caption">
+                <h3>{{$image->name}}</h3>
+                <hr>
+                @unless (Auth::user()->id === $image->user->id)
+                  <div class="author">
+                    {{$image->user->name}}
                   </div>
+                @endunless
+                <div class="description">
+                  {{$image->description}}
                 </div>
-              @endif
-              @if ($image->avatars->count())
-                <div class="left floated avatars">
-                  <a href="{{action('\App\Http\Controllers\Admin\UsersController@show', ['id' => $image->avatars->first()->id])}}" class="ui basic black label">
-                    <i class="icon smile"></i>
-                    {{trans('admin/contents.images.index.avatars')}}
-                    <div class="detail">
-                      {{$image->avatars->first()->name}}
-                    </div>
-                  </a>
+                <div class="created-at">
+                  {{$image->created_at}}
                 </div>
-              @endif
-            </div>
-            <div class="content">
-              @unless (Auth::user()->id === $image->user->id)
-                <div class="author">
-                  <i class="icon user"></i> {{$image->user->name}}
-                </div>
-              @endunless
-              <div class="description">
-                <i class="icon info"></i> {{$image->description}}
               </div>
-              <div class="created-at">
-                <i class="icon arrow up"></i> {{$image->created_at}}
-              </div>
-            </div>
-            <div class="extra content">
               @include('admin/layouts.partials.modal', [
                 'delete' => true,
                 'action' => '\App\Http\Controllers\Admin\ImagesController@destroy',
@@ -62,11 +34,11 @@
                 'message' => trans('admin/modals.images.delete.message'),
                 'approve' => trans('admin/modals.images.delete.approve')
               ])
-              <button class="ui negative right floated button deleteBtn">
-                <i class="icon remove"></i>{{trans('admin/contents.images.index.delete')}}
+              <button class="btn btn-danger deleteBtn">
+                {{trans('admin/contents.images.index.delete')}}
               </button>
             </div>
-          </div>
+            </div>
         @endforeach
       </div>
     @endif

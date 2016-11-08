@@ -3,27 +3,27 @@
 return [
 
   'users' => [
-    'index' => 'List of Users',
+    'index' => 'Users',
     'show' => 'N/A',
     'edit' => 'Edit User'
   ],
 
   'articles' => [
-    'index' => 'List of Articles',
+    'index' => 'Articles',
     'show' => 'N/A',
     'edit' => 'Edit Article',
     'create' => 'Create Article'
   ],
 
   'tags' => [
-    'index' => 'List of Tags',
+    'index' => 'Tags',
     'show' => 'N/A',
     'edit' => 'Edit Tag',
     'create' => 'Create Tag'
   ],
 
   'images' => [
-    'index' => 'List of Images',
+    'index' => 'Images',
     'create' => 'New Image'
   ],
 

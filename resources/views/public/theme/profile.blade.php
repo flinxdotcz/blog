@@ -5,7 +5,7 @@
     <header class="page-header">
       <img class="page-header-thumbnail" src="{{isset($user->coverImage) ? $user->coverImage->url : ''}}" />
       <div class="container-fluid">
-        <div class="page-header-content">
+        <div class="page-header-content profile">
           <h1 class="title">{{$user->name}}</h1>
           {{$user->username}}
         </div>
@@ -19,7 +19,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="profile-content col-sm-8">
-          
+
         </div>
         <aside id="sidebar" class="col-sm-4">
           @include('partials.sidebar', ['blockTitle' => 'Latest articles:'])

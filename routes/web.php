@@ -11,6 +11,8 @@
 |
 */
 
+// Auth routes
+Auth::routes();
 // Public routes
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/profile/{id}', 'UsersController@show')->name('profile');
@@ -24,6 +26,7 @@ Route::group([
   'prefix' => 'admin',
   'namespace' => 'Admin'
   ], function() {
+  Route::get('/', function() { return redirect()->action('\App\Http\Controllers\Admin\ArticlesController@index'); })->name('admin');
   // Images
   Route::get('images', 'ImagesController@index');
   Route::get('image/new', 'ImagesController@create');
@@ -54,5 +57,3 @@ Route::group([
   Route::put('article/{id}', 'ArticlesController@update');
   Route::delete('article/{id}', 'ArticlesController@destroy')->middleware('restricted:admin,articles');
 });
-// Auth routes
-Auth::routes();

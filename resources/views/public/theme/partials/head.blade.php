@@ -8,7 +8,10 @@
       <meta name="_root" content="{{ url('/') }}">
       <meta name="_token" content="{{csrf_token()}}">
     @endif
-    <title></title>
+    @if (!isset($title))
+      {{$title = null}}
+    @endif
+    <title>{{ Route::currentRouteName() == 'home' ? config('app.name', 'blog.app') : $title . ' - ' . config('app.name', 'blog.app') }}</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -24,4 +27,9 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body>
+  @unless (Auth::guest())
+    @include('admin.layouts.partials.nav', ['view' => 'public'])
+    <body style="padding-top: 50px;">
+  @else
+    <body>
+  @endunless
