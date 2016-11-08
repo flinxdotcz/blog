@@ -15,6 +15,10 @@
           {!! Form::label('name', trans('admin/forms.tags.edit.name')) !!}
           {!! Form::text('name', null) !!}
         </div>
+        <div class="field">
+          {!! Form::label('colour', trans('admin/forms.tags.edit.color')) !!}
+          {!! Form::text('colour', null) !!}
+        </div>
         {!! Form::submit(trans('admin/forms.tags.edit.submit'), ['class' => 'ui basic green button submitBtn']) !!}
       {!! Form::close() !!}
     </div>

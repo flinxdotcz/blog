@@ -11,10 +11,13 @@
 |
 */
 
-
-Route::get('/', function() {
-  return redirect('/admin/users');
-});
+// Public routes
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('/profile/{id}', 'UsersController@show')->name('profile');
+Route::get('/' . trans('public/routes.article') . '/{id}', 'ArticlesController@show')->name('article-single');
+// Ajax
+Route::post('/article/{id}/hits', 'ArticlesController@addHit');
+Route::post('/feed', 'ArticlesController@getFeed');
 // Admin routes
 Route::group([
   'middleware' => 'auth',

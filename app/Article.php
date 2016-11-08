@@ -9,8 +9,10 @@ class Article extends Model
 {
   protected $fillable = [
     'name',
+    'slug',
     'content',
-    'published_at'
+    'published_at',
+    'excerpt'
   ];
 
   protected $dates = [
@@ -20,17 +22,27 @@ class Article extends Model
   public function setExcerptAttribute($original) {
     $maxLength = 100;
     $startAt = 0;
-
     if(strlen($original) > $maxLength) {
-    	$excerpt   = substr($original, $startAt, $maxLength-3);
+    	$excerpt = substr($original, $startAt, $maxLength-3);
     	$endAt = strrpos($excerpt, ' ');
-    	$excerpt   = substr($excerpt, 0, $endAt);
-    	$excerpt  .= '...';
+    	$excerpt = substr($excerpt, 0, $endAt);
+    	$excerpt .= '...';
     } else {
     	$excerpt = $original;
     }
+    $excerpt = strip_tags(preg_replace('/&#?[a-z0-9]+;/i', '', $excerpt));
+    return $this->attributes['excerpt'] = $excerpt;
+  }
 
-    $this->attributes['excerpt'] = $excerpt;
+  public function setSlugAttribute($id) {
+    if (!is_null($id)) {
+      $id = $id . '-';
+    }
+    return $this->attributes['slug'] = $id . str_slug($this->name);
+  }
+
+  public function getNameAttribute($input) {
+    return $this->attributes['name'] = title_case($input);
   }
 
   public function scopePublished($query) {

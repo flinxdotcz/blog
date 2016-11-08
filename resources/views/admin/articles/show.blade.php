@@ -52,6 +52,11 @@
             </div>
             <div class="item">
               <div class="content">
+                <i class="icon paragraph"></i> <strong>{{trans('admin/contents.articles.show.slug')}}:</strong> {{$article->slug}}
+              </div>
+            </div>
+            <div class="item">
+              <div class="content">
                 <i class="icon paint brush"></i><strong>{{trans('admin/contents.articles.show.updated_at')}}: </strong>
                 {{$article->updated_at}}
               </div>

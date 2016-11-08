@@ -39,7 +39,8 @@ class TagsController extends Controller
 
   public function update(Request $request, $id) {
     $this->validate($request, [
-      'name' => 'required|min:3|max:15'
+      'name' => 'required|min:3|max:15',
+      'colour' => 'required|min:6|max:6'
     ]);
     $tag = Tag::findOrFail($id);
     $tag->fill($request->all());
@@ -49,12 +50,14 @@ class TagsController extends Controller
 
   public function store(Request $request) {
     $this->validate($request, [
-      'name' => 'required|min:3|max:15'
+      'name' => 'required|min:3|max:15',
+      'colour' => 'required|min:6|max:6'
     ]);
     $tag = new Tag;
     $tag->created_at = \Carbon\Carbon::now();
     $tag->updated_at = \Carbon\Carbon::now();
     $tag->name = $request->input('name');
+    $tag->colour = $request->input('colour');
     $tag->save();
     return redirect()->action('\App\Http\Controllers\Admin\TagsController@show', ['id' => $tag->id])->with('alert', 'success|'.trans('admin/forms.tags.create.status'));
   }

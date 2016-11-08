@@ -55,6 +55,7 @@ class ArticlesController extends Controller
       $article->thumbnail = $request->input('image-reference');
     }
     $article->fill($request->all());
+    $article->slug = $article->id;
     $article->save();
     $article->tags()->sync($request->input('tags'));
     return redirect()->action('\App\Http\Controllers\Admin\ArticlesController@show', ['id' => $article->id])->with('alert', 'success|'.trans('admin/forms.articles.update.success'));
@@ -73,14 +74,15 @@ class ArticlesController extends Controller
     $article->created_at = \Carbon\Carbon::now();
     $article->updated_at = \Carbon\Carbon::now();
     $article->user_id = \Auth::user()->id;
-    $statusMessage = trans('admin/forms.articles.create.status');
     $article->name = $request->input('name');
     $article->published_at = $request->input('published_at');
     $article->content = $request->input('content');
     $article->excerpt = $request->input('content');
     $article->save();
+    $article->slug = $article->id;
+    $article->save();
     $article->tags()->sync($request->input('tags'));
-    return redirect()->action('\App\Http\Controllers\Admin\ArticlesController@show', ['id' => $article->id])->with('alert', 'success|'.$statusMessage);
+    return redirect()->action('\App\Http\Controllers\Admin\ArticlesController@show', ['id' => $article->id])->with('alert', 'success|' . trans('admin/forms.articles.create.status'));
   }
 
   public function destroy($id) {

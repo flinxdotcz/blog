@@ -54,12 +54,14 @@ return [
   'tags' => [
     'create' => [
       'name' => 'Name',
+      'color' => 'Color',
       'submit' => 'Create Tag',
       'status' => 'Tag successfully created.'
     ],
     'edit' => [
       'id' => 'ID',
       'name' => 'Name',
+      'color' => 'Color',
       'submit' => 'Update Tag',
       'status' => 'Tag successfully updated.'
     ],

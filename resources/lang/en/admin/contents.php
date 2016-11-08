@@ -5,6 +5,7 @@ return [
   'articles' => [
     'show' => [
       'id' => 'ID',
+      'slug' => 'Slug',
       'author' => 'Author',
       'name' => 'Title',
       'tags' => 'Tags',
