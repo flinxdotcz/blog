@@ -12,7 +12,7 @@ class HomeController extends Controller
 {
   public function index() {
     $ajax = true;
-    $main = Article::published()->firstOrFail();
+    $main = Article::published()->orderBy('created_at', 'desc')->firstOrFail();
     $articles = Article::published()->take(9)->orderBy('created_at', 'desc')->get();
     return view('home', compact('ajax', 'main', 'articles'));
   }

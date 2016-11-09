@@ -32,10 +32,15 @@ return [
     'upload' => [
       'header' => 'Upload Image',
       'approve' => 'Choose Image',
-      'recent' => 'Recently uploaded'
+      'recent' => 'Recently uploaded',
+      'tabs' => [
+        'upload' => 'Upload',
+        'gallery' => 'Gallery'
+      ],
     ]
   ],
   'all' => [
+    'done' => 'Done',
     'cancel' => 'Cancel'
   ]
 
