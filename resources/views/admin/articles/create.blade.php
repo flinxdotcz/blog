@@ -4,17 +4,14 @@
 
   <div class="container-fluid">
 
-    <h1>{{trans('admin/titles.articles.create')}}</h1>
+    <h1 class="text-center">{{trans('admin/titles.articles.create')}}</h1>
+    <hr>
     {!! Form::open(['action' => '\App\Http\Controllers\Admin\ArticlesController@store']) !!}
       <div class="row">
-        <div class="col-sm-8">
+        <div class="col-sm-5">
           <div class="form-group">
             {!! Form::label('name', trans('admin/forms.articles.create.name')) !!}
             {!! Form::text('name', null, ['class' => 'form-control']) !!}
-          </div>
-          <div class="form-group">
-            {!! Form::label('tags', trans('admin/forms.articles.edit.tags')) !!}
-            {!! Form::select('tags[]', $tags, null, ['class' => 'form-control', 'multiple' => true]) !!}
           </div>
           <div class="form-group">
             {!! Form::label('published_at', trans('admin/forms.articles.edit.published_at')) !!}
@@ -22,6 +19,12 @@
           </div>
         </div>
         <div class="col-sm-4">
+          <div class="form-group">
+            {!! Form::label('tags', trans('admin/forms.articles.edit.tags')) !!}
+            {!! Form::select('tags[]', $tags, null, ['class' => 'form-control', 'multiple' => true]) !!}
+          </div>
+        </div>
+        <div class="col-sm-3 text-center">
           <div class="thumbnail">
             <img class="currentImage" src="" alt="" />
           </div>
@@ -30,8 +33,9 @@
           </a>
         </div>
       </div>
+      <hr>
       <div class="row">
-        <div class="col-xs-12">
+        <div class="col-sm-12">
           <div class="field">
             {!! Form::label('content', trans('admin/forms.articles.create.content')) !!}
             {!! Form::textarea('content', null, ['id' => 'richedit']) !!}

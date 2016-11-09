@@ -4,18 +4,16 @@
 
   <div class="container-fluid">
 
-    <div class="row">
-      <div class="col-sm-8">
-        <h1>
-          @if ($user->avatarImage)
-            <div class="thumbnail avatar">
-              <img src="{{$user->avatarImage->url}}">
-            </div>
-          @endif
-          {{$user->name}}
-        </h1>
-      </div>
-      <div class="col-sm-4">
+    <h1 class="text-center">
+      @if ($user->avatarImage)
+        <div class="thumbnail avatar">
+          <img src="{{$user->avatarImage->url}}">
+        </div>
+      @endif
+      <div class="button pull-right">
+        <a href="{{action('UsersController@show', ['id' => $user->id])}}" class="btn btn-default"}}>
+          {{trans('admin/contents.users.show.display')}}
+        </a>
         <a href="{{action('\App\Http\Controllers\Admin\UsersController@edit', ['id' => $user->id])}}" class="btn btn-default">
           {{trans('admin/contents.users.show.edit')}}
         </a>
@@ -31,8 +29,9 @@
           {{trans('admin/contents.users.show.delete')}}
         </button>
       </div>
-    </div>
-
+      {{$user->name}}
+    </h1>
+    <hr>
     <div class="row">
       <div class="col-sm-8">
         <div class="list">
@@ -64,7 +63,7 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-sm-4 text-right">
         <div class="list">
           <div class="item">
             <div class="content">

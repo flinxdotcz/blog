@@ -23,6 +23,10 @@ $(document).ready(function(){
     $('.image-upload').modal('hide');
   });
 
+  $('.btn.disabled').click(function(e){
+    e.preventDefault();
+  });
+
   $('.image-block').length ? equalHeight($('.image-block')) : '';
 
   function equalHeight(el) {

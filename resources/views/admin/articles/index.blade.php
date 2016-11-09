@@ -4,8 +4,9 @@
 
   <div class="container-fluid">
 
-    <h1>{{trans('admin/titles.articles.index')}}</h1>
-    <table class="table">
+    <h1 class="text-center">{{trans('admin/titles.articles.index')}}</h1>
+    {{$articles->links()}}
+    <table class="table table-striped table-bordered table-responsive table-hover">
       <thead>
         <tr>
           <td>
@@ -45,19 +46,15 @@
               {{$article->id}}
             </td>
             <td>
-              <h4>
-                <div class="content">
-                  <a href="{{action('\App\Http\Controllers\Admin\ArticlesController@show', ['id' => $article->id])}}">
-                    {{$article->name}}
-                  </a>
-                  <div class="sub header">
-                    {{$article->excerpt}}
-                  </div>
-                </div>
-              </h4>
+              <a href="{{action('\App\Http\Controllers\Admin\ArticlesController@show', ['id' => $article->id])}}">
+                {{$article->name}}
+              </a>
+              <div class="excerpt">
+                {{$article->excerpt}}
+              </div>
             </td>
             <td>
-              <a href="#" class="thumbnail avatar">
+              <a href="{{action('\App\Http\Controllers\Admin\UsersController@show', ['id' => $article->user->id])}}" class="thumbnail avatar">
                 @if ($article->user->avatarImage)
                     <img src="{{$article->user->avatarImage->url}}">
                 @endif

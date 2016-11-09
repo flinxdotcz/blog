@@ -15,6 +15,7 @@ return [
       'thumbnail' => 'Thumbnail',
       'publish' => 'Publish Now',
       'unpublish' => 'Unpublish',
+      'display' => 'Show',
       'edit' => 'Edit',
       'delete' => 'Delete',
       'discard' => 'Discard',
@@ -57,6 +58,7 @@ return [
       'role' => 'Role',
       'created_at' => 'Created',
       'updated_at' => 'Updated',
+      'display' => 'Show',
       'edit' => 'Edit',
       'delete' => 'Delete',
       'articles' => 'Articles'

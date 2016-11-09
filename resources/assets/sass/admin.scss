@@ -1,12 +1,62 @@
 body {
-  padding-top: 75px;
+  padding-top: 50px;
 }
 .container-fluid {
   max-width: 1200px;
 }
+hr {
+  margin: 5px;
+}
+.text-content {
+  img {
+    width: 100%;
+    height: auto;
+    padding: 15px 15px;
+  }
+}
+ul.pagination {
+  margin: 2.5px;
+}
+.tag-label {
+  display: inline-block;
+  overflow: hidden;
+  font-size: 75%;
+  width: 50px;
+  height: 50px;
+  float: left;
+  border: 1px solid #eee;
+  font-weight: 700;
+  background-color: #ccc;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 50%;
+}
 .avatar {
-  width: 40px;
-  height: 40px;
+  text-align: center;
+  font-weight: 600;
+  height: 50px;
+  display: inline-block;
+  float: left;
+  min-width: 50px;
+  margin: 0px;
+  padding: 0;
+  overflow: hidden;
+  line-height: 40px;
+  * {
+    padding: 5px 15px;
+  }
+  &:hover {
+    text-decoration: none;
+  }
+  img {
+    padding: 0;
+    display: block;
+    height: 48px;
+    width: 48px;
+    float: left;
+  }
 }
 .image-block {
   img {

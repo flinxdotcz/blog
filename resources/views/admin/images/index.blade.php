@@ -4,7 +4,7 @@
 
   <div class="container-fluid">
 
-    <h1>{{trans('admin/titles.images.index')}}</h1>
+    <h1 class="text-center">{{trans('admin/titles.images.index')}}</h1>
     @if ($images->count())
       <div class="row">
         @foreach ($images as $image)

@@ -4,8 +4,9 @@
 
   <div class="container-fluid">
 
-    <h1>{{trans('admin/titles.tags.index')}}</h1>
-    <table class="table">
+    <h1 class="text-center">{{trans('admin/titles.tags.index')}}</h1>
+    {{$tags->links()}}
+    <table class="table table-striped table-bordered table-responsive table-hover">
       <thead>
         <tr>
           <td>
@@ -37,16 +38,9 @@
               {{$tag->id}}
             </td>
             <td>
-              <h4>
-                @if ($tag->avatarImage)
-                  <div class="thumbnail">
-                    <img src="{{$article->thumbnailImage->url}}" alt="{{$article->name}}" />
-                  </div>
-                @endif
-                <a href="{{action('\App\Http\Controllers\Admin\TagsController@show', ['id' => $tag->id])}}">
-                  {{$tag->name}}
-                </a>
-              </h4>
+              <a href="{{action('\App\Http\Controllers\Admin\TagsController@show', ['id' => $tag->id])}}">
+                {{$tag->name}}
+              </a>
             </td>
             <td>
               {{$tag->created_at}}

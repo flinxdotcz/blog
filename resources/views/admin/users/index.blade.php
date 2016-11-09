@@ -4,8 +4,9 @@
 
   <div class="container-fluid">
 
-    <h1>{{trans('admin/titles.users.index')}}</h1>
-    <table class="table">
+    <h1 class="text-center">{{trans('admin/titles.users.index')}}</h1>
+    {{$users->links()}}
+    <table class="table table-striped table-bordered table-responsive table-hover">
       <thead>
         <tr>
           <td>
@@ -50,11 +51,9 @@
               {{$user->id}}
             </td>
             <td>
-              <h4>
-                <a href="{{action('\App\Http\Controllers\Admin\UsersController@show', ['id' => $user->id])}}">
-                  {{$user->name}}
-                </a>
-              </h4>
+              <a href="{{action('\App\Http\Controllers\Admin\UsersController@show', ['id' => $user->id])}}">
+                {{$user->name}}
+              </a>
             </td>
             <td>
               {{$user->email}}

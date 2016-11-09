@@ -4,9 +4,10 @@
 
   <div class="container-fluid">
 
-    <h1>{{trans('admin/titles.users.edit')}}: <strong>{{$user->name}}</strong></h1>
+    <h1 class="text-center">{{trans('admin/titles.users.edit')}}: <strong>{{$user->name}}</strong></h1>
+    <hr>
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-sm-4 col-sm-offset-2">
         {!! Form::model($user, ['action' => ['\App\Http\Controllers\Admin\UsersController@update', 'id' => $user->id], 'method' => 'PUT']) !!}
           <div class="form-group">
             {!! Form::label('id', trans('admin/forms.users.edit.id')) !!}

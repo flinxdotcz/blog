@@ -45,7 +45,7 @@ class TagsController extends Controller
     $tag = Tag::findOrFail($id);
     $tag->fill($request->all());
     $tag->save();
-    return redirect()->action('\App\Http\Controllers\Admin\TagsController@show', ['id' => $tag->id])->with('alert', 'success|'.trans('admin/forms.tags.update.success'));
+    return redirect()->action('\App\Http\Controllers\Admin\TagsController@show', ['id' => $tag->id])->with('alert', 'success|'.trans('admin/forms.tags.edit.status'));
   }
 
   public function store(Request $request) {

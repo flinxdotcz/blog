@@ -4,10 +4,11 @@
 
   <div class="container-fluid">
 
-    <h1>{{trans('admin/titles.articles.edit')}}: <strong>{{$article->name}}</strong></h1>
+    <h1 class="text-center">{{trans('admin/titles.articles.edit')}}: <strong>{{$article->name}}</strong></h1>
+    <hr>
     {!! Form::model($article, ['action' => ['\App\Http\Controllers\Admin\ArticlesController@update', 'id' => $article->id], 'method' => 'PUT']) !!}
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-sm-5">
         <div class="form-group">
           {!! Form::label('id', trans('admin/forms.articles.edit.id')) !!}
           {!! Form::number('id', null, ['disabled' => 'disabled', 'class' => 'form-control']) !!}
@@ -17,15 +18,17 @@
           {!! Form::text('name', null, ['class' => 'form-control']) !!}
         </div>
         <div class="form-group">
-          {!! Form::label('tags', trans('admin/forms.articles.edit.tags')) !!}
-          {!! Form::select('tags[]', $tags, $article->tags->pluck('id')->toArray(), ['class' => 'form-control', 'multiple' => true]) !!}
-        </div>
-        <div class="form-group">
           {!! Form::label('published_at', trans('admin/forms.articles.edit.published_at')) !!}
           {!! Form::date('published_at', $article->published_at, ['class' => 'form-control']) !!}
         </div>
       </div>
       <div class="col-sm-4">
+        <div class="form-group">
+          {!! Form::label('tags', trans('admin/forms.articles.edit.tags')) !!}
+          {!! Form::select('tags[]', $tags, $article->tags->pluck('id')->toArray(), ['class' => 'form-control', 'multiple' => true]) !!}
+        </div>
+      </div>
+      <div class="col-sm-3 text-center">
         <div class="thumbnail">
           @if ($article->thumbnailImage)
             <img class="currentImage" src="{{$article->thumbnailImage->url}}" alt="" />
@@ -38,8 +41,9 @@
         </a>
       </div>
     </div>
+    <hr>
     <div class="row">
-      <div class="col-xs-12">
+      <div class="col-sm-12">
         <div class="form-group">
           {!! Form::label('content', trans('admin/forms.articles.edit.content')) !!}
           {!! Form::textarea('content', null, ['id' => 'richedit']) !!}

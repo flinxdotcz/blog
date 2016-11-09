@@ -4,11 +4,11 @@
 
   <div class="container-fluid">
 
-    <div class="row">
-      <div class="col-sm-8">
-        <h1>{{$tag->name}}</h1>
-      </div>
-      <div class="col-sm-4">
+    <h1 class="text-center">
+      @if (isset($tag->colour))
+        <span class="tag-label" style="background-color: #{{$tag->colour}};"></span>
+      @endif
+      <div class="button pull-right">
         <a href="{{action('\App\Http\Controllers\Admin\TagsController@edit', ['id' => $tag->id])}}" class="btn btn-default">
           {{trans('admin/contents.tags.show.edit')}}
         </a>
@@ -24,10 +24,12 @@
           {{trans('admin/contents.tags.show.delete')}}
         </button>
       </div>
-    </div>
+      {{$tag->name}}
+    </h1>
 
+    <hr>
     <div class="row">
-      <div class="col-sm-6">
+      <div class="col-sm-5">
         <div class="list">
           <div class="item">
             <div class="content">
