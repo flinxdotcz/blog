@@ -30,7 +30,7 @@ class ArticlesController extends Controller
     $currentOption = [
       'name' => 'Article',
       'routeName' => 'article',
-      'id' => $article->id
+      'id' => $article->slug
     ];
     return view('admin.articles.show', compact('currentOption','article'));
   }

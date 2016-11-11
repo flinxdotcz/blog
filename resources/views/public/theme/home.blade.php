@@ -2,7 +2,7 @@
 @section('content')
 
   <div class="home">
-    <a href="{{route('article-single', $main->slug)}}">
+    <a href="{{route('article', $main->slug)}}">
       <header class="page-header">
         <img class="page-header-thumbnail" src="{{isset($main->thumbnailImage) ? $main->thumbnailImage->url : ''}}" />
         <div class="container-fluid">
@@ -24,7 +24,7 @@
           @if (isset($articles))
             <div class="row clearfix">
               @foreach ($articles as $article)
-                <a href="{{route('article-single', $article->slug)}}">
+                <a href="{{route('article', $article->slug)}}">
                   <div class="article-block col-sm-6 col-md-4">
                     <div class="article-block-thumbnail">
                       <img id="{{$article->id}}" src="{{isset($article->thumbnailImage) ? $article->thumbnailImage->url : ''}}" alt="{{$article->name}}" />
