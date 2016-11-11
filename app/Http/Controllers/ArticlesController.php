@@ -23,7 +23,12 @@ class ArticlesController extends Controller
       $article = Article::findOrFail($id)->published();
     }
     $title = $article->name;
-    return view('article-single', compact('title','article','ajax'));
+    $currentOption = [
+      'name' => 'Article',
+      'routeName' => 'article-edit',
+      'id' => $article->id
+    ];
+    return view('article-single', compact('currentOption','title','article','ajax'));
   }
 
   public function addHit(Request $request, $id) {

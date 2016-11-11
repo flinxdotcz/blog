@@ -1,11 +1,16 @@
 body {
   padding-top: 50px;
 }
+nav {
+  .container-fluid {
+    max-width: 1200px;
+  }
+}
 .container-fluid {
-  max-width: 1200px;
+  max-width: 997px;
 }
 hr {
-  margin: 5px;
+  margin: 10px 0;
 }
 .text-content {
   img {
@@ -17,13 +22,15 @@ hr {
 ul.pagination {
   margin: 2.5px;
 }
+.buttons {
+  margin: 15px 0 30px 0;
+}
 .tag-label {
   display: inline-block;
   overflow: hidden;
   font-size: 75%;
-  width: 50px;
-  height: 50px;
-  float: left;
+  width: 30px;
+  height: 30px;
   border: 1px solid #eee;
   font-weight: 700;
   background-color: #ccc;

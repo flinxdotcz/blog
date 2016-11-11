@@ -31,7 +31,12 @@ class UsersController extends Controller
     } else {
       $user = User::findOrFail($id);
     }
-    return view('admin.users.show', compact('user'));
+    $currentOption = [
+      'name' => 'Profile',
+      'routeName' => 'profile',
+      'id' => $user->id
+    ];
+    return view('admin.users.show', compact('currentOption','user'));
   }
 
   public function edit($id) {

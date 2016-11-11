@@ -27,7 +27,7 @@
                 <a href="{{route('article-single', $article->slug)}}">
                   <div class="article-block col-sm-6 col-md-4">
                     <div class="article-block-thumbnail">
-                      <img src="{{isset($article->thumbnailImage) ? $article->thumbnailImage->url : ''}}" alt="{{$article->name}}" />
+                      <img id="{{$article->id}}" src="{{isset($article->thumbnailImage) ? $article->thumbnailImage->url : ''}}" alt="{{$article->name}}" />
                     </div>
                     <h3 class="article-block-title">
                       {{$article->name}}

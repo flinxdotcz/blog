@@ -10,28 +10,32 @@
           <img src="{{$user->avatarImage->url}}">
         </div>
       @endif
-      <div class="button pull-right">
-        <a href="{{action('UsersController@show', ['id' => $user->id])}}" class="btn btn-default"}}>
-          {{trans('admin/contents.users.show.display')}}
-        </a>
-        <a href="{{action('\App\Http\Controllers\Admin\UsersController@edit', ['id' => $user->id])}}" class="btn btn-default">
-          {{trans('admin/contents.users.show.edit')}}
-        </a>
-        @include('admin/layouts.partials.modal', [
-          'delete' => true,
-          'action' => '\App\Http\Controllers\Admin\UsersController@destroy',
-          'id' => $user->id,
-          'header' => trans('admin/modals.users.delete.header'),
-          'message' => trans('admin/modals.users.delete.message'),
-          'approve' => trans('admin/modals.users.delete.approve')
-        ])
-        <button class="btn btn-danger deleteBtn">
-          {{trans('admin/contents.users.show.delete')}}
-        </button>
-      </div>
       {{$user->name}}
     </h1>
     <hr>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="buttons">
+          <a href="{{action('UsersController@show', ['id' => $user->id])}}" class="btn btn-default"}}>
+            {{trans('admin/contents.users.show.display')}}
+          </a>
+          <a href="{{action('\App\Http\Controllers\Admin\UsersController@edit', ['id' => $user->id])}}" class="btn btn-default">
+            {{trans('admin/contents.users.show.edit')}}
+          </a>
+          @include('admin/layouts.partials.modal', [
+            'delete' => true,
+            'action' => '\App\Http\Controllers\Admin\UsersController@destroy',
+            'id' => $user->id,
+            'header' => trans('admin/modals.users.delete.header'),
+            'message' => trans('admin/modals.users.delete.message'),
+            'approve' => trans('admin/modals.users.delete.approve')
+          ])
+          <button class="btn btn-danger deleteBtn">
+            {{trans('admin/contents.users.show.delete')}}
+          </button>
+        </div>
+      </div>
+    </div>
     <div class="row">
       <div class="col-sm-8">
         <div class="list">

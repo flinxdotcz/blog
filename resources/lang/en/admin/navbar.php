@@ -28,6 +28,13 @@ return [
     'admin' => 'Admin panel',
     'homepage' => 'Homepage',
     'logout' => 'Log out'
+  ],
+  'create-new' => [
+    'label' => 'Create New'
+  ],
+  'current-option' => [
+    'edit' => 'Edit',
+    'show' => 'Show'
   ]
 
 ];

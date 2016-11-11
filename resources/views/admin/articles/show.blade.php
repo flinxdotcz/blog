@@ -4,29 +4,33 @@
 
   <div class="container-fluid">
 
-    <h1 class="text-center clearfix">
-      <div class="buttons pull-right">
-        <a href="{{action('ArticlesController@show', ['id' => $article->slug])}}" class="btn btn-default {{!$article->isPublished() ? 'disabled' : ''}}" {{!$article->isPublished() ? 'disabled' : ''}}>
-          {{trans('admin/contents.articles.show.display')}}
-        </a>
-        <a href="{{action('\App\Http\Controllers\Admin\ArticlesController@edit', ['id' => $article->id])}}" class="btn btn-default">
-          {{trans('admin/contents.articles.show.edit')}}
-        </a>
-        @include('admin/layouts.partials.modal', [
-          'delete' => true,
-          'action' => '\App\Http\Controllers\Admin\ArticlesController@destroy',
-          'id' => $article->id,
-          'header' => trans('admin/modals.articles.delete.header'),
-          'message' => trans('admin/modals.articles.delete.message'),
-          'approve' => trans('admin/modals.articles.delete.approve')
-        ])
-        <button class="btn btn-danger deleteBtn">
-          {{trans('admin/contents.articles.show.delete')}}
-        </button>
-      </div>
+    <h1 class="text-center">
       {{$article->name}}
-      </h1>
+    </h1>
     <hr>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="buttons">
+          <a href="{{action('ArticlesController@show', ['id' => $article->slug])}}" class="btn btn-default {{!$article->isPublished() ? 'disabled' : ''}}" {{!$article->isPublished() ? 'disabled' : ''}}>
+            {{trans('admin/contents.articles.show.display')}}
+          </a>
+          <a href="{{action('\App\Http\Controllers\Admin\ArticlesController@edit', ['id' => $article->id])}}" class="btn btn-default">
+            {{trans('admin/contents.articles.show.edit')}}
+          </a>
+          @include('admin/layouts.partials.modal', [
+            'delete' => true,
+            'action' => '\App\Http\Controllers\Admin\ArticlesController@destroy',
+            'id' => $article->id,
+            'header' => trans('admin/modals.articles.delete.header'),
+            'message' => trans('admin/modals.articles.delete.message'),
+            'approve' => trans('admin/modals.articles.delete.approve')
+          ])
+          <button class="btn btn-danger deleteBtn">
+            {{trans('admin/contents.articles.show.delete')}}
+          </button>
+        </div>
+      </div>
+    </div>
     <div class="row">
       <div class="col-sm-5">
         <div class="list">

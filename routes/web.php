@@ -16,7 +16,7 @@ Auth::routes();
 // Public routes
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/profile/{id}', 'UsersController@show')->name('profile');
-Route::get('/' . trans('public/routes.article') . '/{id}', 'ArticlesController@show')->name('article-single');
+Route::get('/' . trans('public/routes.article') . '/{id}', 'ArticlesController@show')->name('article');
 // Ajax
 Route::post('/article/{id}/hits', 'ArticlesController@addHit');
 Route::post('/feed', 'ArticlesController@getFeed');
@@ -36,7 +36,7 @@ Route::group([
   Route::get('users', 'UsersController@index');
   Route::post('profile', 'UsersController@store');
   Route::get('profile/{id}', 'UsersController@show');
-  Route::get('profile/{id}/edit', 'UsersController@edit')->middleware('restricted:admin');
+  Route::get('profile/{id}/edit', 'UsersController@edit')->name('profile-edit')->middleware('restricted:admin');
   Route::put('profile/{id}', 'UsersController@update')->middleware('restricted:admin');
   Route::delete('profile/{id}', 'UsersController@destroy')->middleware('restricted:admin,users');
   // Tags
@@ -52,7 +52,7 @@ Route::group([
   Route::get('article/create', 'ArticlesController@create');
   Route::post('article', 'ArticlesController@store');
   Route::get('article/{id}', 'ArticlesController@show');
-  Route::get('article/{id}/edit', 'ArticlesController@edit');
+  Route::get('article/{id}/edit', 'ArticlesController@edit')->name('article-edit');
   Route::patch('article/{id}', 'ArticlesController@update');
   Route::put('article/{id}', 'ArticlesController@update');
   Route::delete('article/{id}', 'ArticlesController@destroy')->middleware('restricted:admin,articles');

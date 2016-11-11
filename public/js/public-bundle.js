@@ -22,8 +22,7 @@ $(document).ready(function() {
 
   $('#sidebar').length ? feedSidebar(baseUrl+'/feed') : '';
 
-  $('.home-content').length ? equalHeight(articleBlock) : '';
-  articleBlock.length ? resizeThumbnail($('.article-block-thumbnail'),21,9) : '';
+  $('.home-content').length && equalHeight(articleBlock);
 
   headerContent.fadeIn(1000);
   thumbnail.fadeIn(1000);
@@ -109,41 +108,61 @@ function equalHeight(el) {
   $(el).height(biggest);
 }
 
-function resizeThumbnail(el,x,y) {
-  el.each(function(index, item) {
-    x = x || 1;
-    y = y || 1;
-    var smaller;
-    x > y ? smaller = x : smaller = y;
-    x = x/smaller;
-    y = y/smaller;
-    var elWidth = el.width() * x,
-        elHeight = el.width() * y,
-        img = $(item).find('img'),
-        imgX = img.width(),
-        imgY = img.height();
-    el.width(elWidth);
-    el.height(elHeight);
-    console.log(imgX+' '+imgY);
-    if (imgX >= elWidth && imgY < elHeight) {
-      img.css({
-        'height': '100%',
-        'width': 'auto',
-        'margin-left': '-'+imgX/2+'px'
-      });
-    } else if (imgX <= elWidth && imgY > elHeight) {
-      img.css({
-        'height': 'auto',
-        'width': '100%',
-        'margin-top': '-'+imgX/2+'px'
-      });
-    } else {
-      img.css({
-        'height': '100%',
-        'width': '100%'
-      });
-    }
-  });
-}
+// function resizeThumbnail(item,x,y) {
+//   x = x || 1;
+//   y = y || 1;
+//   var smaller;
+//   x > y ? smaller = x : smaller = y;
+//   x = x/smaller;
+//   y = y/smaller;
+//   var img = $(item).find('img'),
+//       elX = $(item).width(),
+//       elY = $(item).width(),
+//       imgX = img.width(),
+//       imgY = img.height();
+//   item.width(elX * x);
+//   item.height(elY * y);
+//   switch (true) {
+//     case x > y:
+//       switch (true) {
+//         case imgX > imgY:
+//           img.css({width: (elX * x)+'px',height: 'auto',marginTop: '-'+(imgY-elY*y)/2+'px'});
+//           break;
+//         case imgX == imgY:
+//           img.css({width: (elX * x)+'px',height: 'auto',marginTop: '-'+(imgY-elY*y)+'px'});
+//           break;
+//         case imgX < imgY:
+//           img.css({width: 'auto',height: (elY * y)+'px'});
+//           break;
+//       }
+//       break;
+//     case x == y:
+//       switch (true) {
+//         case imgX > imgY:
+//           img.css({width: 'auto',height: (elY * y)+'px'});
+//           break;
+//         case imgX == imgY:
+//           img.css({width: (elX * x)+'px',height: (elY * y)+'px'});
+//           break;
+//         case imgX < imgY:
+//           img.css({width: (elX * x)+'px',height: 'auto'});
+//           break;
+//       }
+//       break;
+//     case x < y:
+//       switch (true) {
+//         case imgX > imgY:
+//           img.css({width: 'auto',height: (elY * y)+'px'});
+//           break;
+//         case imgX == imgY:
+//           img.css({width: (elX * x)+'px',height: 'auto'});
+//           break;
+//         case imgX < imgY:
+//           img.css({width: (elX * x)+'px',height: 'auto'});
+//           break;
+//       }
+//       break;
+//   }
+// }
 
 //# sourceMappingURL=public-bundle.js.map

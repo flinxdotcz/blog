@@ -27,7 +27,12 @@ class ArticlesController extends Controller
 
   public function show($id) {
     $article = Article::findOrFail($id);
-    return view('admin.articles.show', compact('article'));
+    $currentOption = [
+      'name' => 'Article',
+      'routeName' => 'article',
+      'id' => $article->id
+    ];
+    return view('admin.articles.show', compact('currentOption','article'));
   }
 
   public function edit($id) {
