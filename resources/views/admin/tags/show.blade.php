@@ -42,6 +42,11 @@
           </div>
           <div class="item">
             <div class="content">
+              <strong>{{trans('admin/contents.tags.show.slug')}}:</strong> {{$tag->slug}}
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
               <strong>{{trans('admin/contents.tags.show.articles')}}: </strong>
               {{$tag->articles->count()}}
             </div>

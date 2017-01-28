@@ -13,7 +13,7 @@
                 <div class="tags">
                   @if (!empty($main->tags))
                     @foreach ($main->tags as $tag)
-                      <a href="#">
+                      <a href="{{route('tag', $tag->slug)}}">
                         <span class="tag" style="background-color: #{{$tag->colour}};">{{$tag->name}}</span>
                       </a>
                     @endforeach

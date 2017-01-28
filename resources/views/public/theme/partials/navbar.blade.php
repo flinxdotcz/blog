@@ -15,7 +15,7 @@
       @if(!empty($tags))
         <ul class="nav navbar-nav">
           @foreach ($tags as $tag)
-            <li><a href="#">{{$tag->name}}</a></li>
+            <li><a href="{{route('tag', $tag->slug)}}">{{$tag->name}}</a></li>
           @endforeach
         </ul>
       @endif

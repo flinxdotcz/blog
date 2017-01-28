@@ -16,6 +16,7 @@ Auth::routes();
 // Public routes
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/profile/{id}', 'UsersController@show')->name('profile');
+Route::get('/tag/{id}', 'TagsController@show')->name('tag');
 Route::get('/' . trans('public/routes.article') . '/{id}', 'ArticlesController@show')->name('article');
 // Ajax
 Route::post('/article/{id}/hits', 'ArticlesController@addHit');

@@ -35,6 +35,7 @@ return [
   'tags' => [
     'show' => [
       'id' => 'ID',
+      'slug' => 'Slug',
       'name' => 'Name',
       'created_at' => 'Created',
       'updated_at' => 'Updated',

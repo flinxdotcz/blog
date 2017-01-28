@@ -144,8 +144,9 @@ a {
     background-color: $white;
   }
 }
-.profile {
-  .profile-header {
+.show-page {
+  .show-page-header {
+    height: 80px;
     background-color: lighten($black, 5%);
     color: $white;
     .user-avatar {
@@ -163,7 +164,7 @@ a {
       }
     }
   }
-  .profile-body {
+  .show-page-body {
     padding-top: 30px;
     padding-bottom: 45px;
     @media only screen and (min-width: 767px) {

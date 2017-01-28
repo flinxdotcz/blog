@@ -1,22 +1,52 @@
 @extends('layouts.main')
 @section('content')
 
-  <div class="profile"  id="profile_{{$user->id}}">
+  <div class="tag-list"  id="tag_{{$tag->id}}">
     <div class="show-page">
       <header class="show-page-header">
         {{-- <img src="{{isset($user->avatarImage) ? $user->avatarImage->url : '#'}}" alt="{{$user->name}}" /> --}}
         <div class="container-fluid">
-          <div class="user-avatar" style="{{!isset($user->avatarImage) ? 'padding-left: 0;' : ''}}">
-            @if (isset($user->avatarImage))
-              <div class="avatar" style="background: url('{{$user->avatarImage->url}}') no-repeat; background-size: cover;"></div>
-            @endif
+          <h1>{{$tag->name}}</h1>
+        </div>
+      </header>
+      <section class="tag-list-content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="popular col-sm-6">
+              @if (!empty($tag->articles))
+                @foreach ($tag->articles as $a)
+                  <a href="{{route('article', $a->slug)}}">
+                    <article id="p_{{$a->id}}" class="article-popular">
+                      <header>
+                        <div class="title">
+                          <h3>{{$a->name}}</h3>
+                        </div>
+                      </header>
+                      <div class="thumbnail">
+                        <img src="{{isset($a->thumbnailImage) ? $a->thumbnailImage->url : ''}}" alt="{{isset($a->thumbnailImage) ? $a->thumbnailImage->name : ''}}">
+                      </div>
+                    </article>
+                  </a>
+                @endforeach
+              @endif
+            </div>
+            <div id="sidebar" class="tag-list-sidebar col-sm-3">
+              @include('partials.sidebar', ['blockTitle' => 'Latest articles:'])
+            </div>
+          </div>
+        </div>
+      </section>
+      {{-- <header class="profile-header">
+        <div class="container-fluid">
+          <div class="user-avatar">
+            <div class="avatar" style="background: url('{{$user->avatarImage->url}}') no-repeat; background-size: cover;"></div>
             <h1>{{$user->name}}</h1>
           </div>
         </div>
       </header>
       <div class="container-fluid">
         <div class="row">
-          <div class="show-page-body col-sm-9">
+          <div class="profile-body col-sm-9">
             <div class="user">
               <div class="user-bio">
                 <p><strong>USERNAME:</strong> {{$user->username}}</p>
@@ -62,7 +92,7 @@
             @include('partials.sidebar', ['blockTitle' => 'Latest articles:'])
           </div>
         </div>
-      </div>
+      </div> --}}
     </div>
   </div>
 
