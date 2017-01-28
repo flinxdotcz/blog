@@ -44,6 +44,12 @@ class TagsController extends Controller
     ]);
     $tag = Tag::findOrFail($id);
     $tag->fill($request->all());
+    if ($request->input('isDisplayed') == 'on') {
+      $tag->isDisplayed = true;
+    } else {
+      $tag->isDisplayed = false;
+    }
+    $tag->order = $request->input('order');
     $tag->save();
     return redirect()->action('\App\Http\Controllers\Admin\TagsController@show', ['id' => $tag->id])->with('alert', 'success|'.trans('admin/forms.tags.edit.status'));
   }
@@ -58,6 +64,12 @@ class TagsController extends Controller
     $tag->updated_at = \Carbon\Carbon::now();
     $tag->name = $request->input('name');
     $tag->colour = $request->input('colour');
+    if ($request->input('isDisplayed') == 'on') {
+      $tag->isDisplayed = true;
+    } else {
+      $tag->isDisplayed = false;
+    }
+    $tag->order = $request->input('order');
     $tag->save();
     return redirect()->action('\App\Http\Controllers\Admin\TagsController@show', ['id' => $tag->id])->with('alert', 'success|'.trans('admin/forms.tags.create.status'));
   }

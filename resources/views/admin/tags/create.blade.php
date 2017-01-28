@@ -14,8 +14,17 @@
             {!! Form::text('name', null, ['class' => 'form-control']) !!}
           </div>
           <div class="form-group">
-            {!! Form::label('colour', trans('admin/forms.tags.create.color')) !!}
+            {!! Form::label('colour', trans('admin/forms.tags.create.colour')) !!}
             {!! Form::text('colour', null, ['class' => 'form-control']) !!}
+          </div>
+          <div class="form-group">
+            {!! Form::label('isDisplayed', trans('admin/forms.tags.create.isDisplayed')) !!}
+            <br />
+            {!! Form::checkbox('isDisplayed', null, true, ['class' => 'isDisplayed']) !!}
+          </div>
+          <div class="form-group">
+            {!! Form::label('order', trans('admin/forms.tags.create.order')) !!}
+            {!! Form::number('order', null, ['class' => 'form-control']) !!}
           </div>
           {!! Form::submit(trans('admin/forms.tags.create.submit'), ['class' => 'btn btn-success submitBtn']) !!}
         {!! Form::close() !!}

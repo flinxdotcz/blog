@@ -24,7 +24,7 @@ class ArticlesController extends Controller
     } else {
       $article = Article::published()->findOrFail($id);
     }
-    $tags = Tag::get();
+    $tags = Tag::displayed()->orderBy('order')->get();
     $title = $article->name;
     $currentOption = [
       'name' => 'Article',

@@ -11,6 +11,10 @@ class Tag extends Model
     'colour'
   ];
 
+  public function scopeDisplayed($query) {
+    return $query->where('isDisplayed', '=', 1);
+  }
+
   public function articles() {
     return $this->belongsToMany('App\Article');
   }

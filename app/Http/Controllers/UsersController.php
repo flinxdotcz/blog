@@ -16,7 +16,7 @@ class UsersController extends Controller
     $ajax = true;
     $user = User::findOrFail($id);
     $title = $user->name;
-    $tags = Tag::get();
+    $tags = Tag::displayed()->orderBy('order')->get();
     $currentOption = [
       'name' => 'Profile',
       'routeName' => 'profile-edit',
