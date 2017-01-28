@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="{{$view == 'admin' ? route('home') : route('admin')}}">
-        {{ config('app.name', 'blog.app') }}
+        <strong>Admin</strong>
       </a>
     </div>
     <div class="collapse navbar-collapse" id="navbar-admin-collapse">

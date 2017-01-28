@@ -1,4 +1,6 @@
 @include('public.theme.partials.head')
-@include('public.theme.partials.navbar')
+@include('partials.navbar')
 @yield('content')
-@include('public.theme.partials.footer')
+@unless (isset($loginRoute) && $loginRoute === true)
+  @include('public.theme.partials.footer')
+@endunless

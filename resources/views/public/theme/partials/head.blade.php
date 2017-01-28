@@ -13,11 +13,8 @@
     @endif
     <title>{{ Route::currentRouteName() == 'home' ? config('app.name', 'blog.app') : $title . ' - ' . config('app.name', 'blog.app') }}</title>
 
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Jaldi:700|Raleway:400,600" rel="stylesheet">
     <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="{{asset('css/vendor.css')}}">
     <link rel="stylesheet" href="{{asset('css/public.css')}}">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

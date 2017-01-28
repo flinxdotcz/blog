@@ -87,8 +87,10 @@ function feedSidebar(url) {
               "+article.name+"\
             </h4>\
           </a>\
+          <p class='article-single-excerpt'>\
+            "+article.excerpt+"\
+          </p>\
           <p class='article-single-meta'>\
-          "+article.created_at+"\
           </p>\
         </div>\
       ");

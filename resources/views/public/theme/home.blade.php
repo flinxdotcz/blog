@@ -2,53 +2,92 @@
 @section('content')
 
   <div class="home">
-    <a href="{{route('article', $main->slug)}}">
-      <header class="page-header">
-        <img class="page-header-thumbnail" src="{{isset($main->thumbnailImage) ? $main->thumbnailImage->url : ''}}" />
-        <div class="container-fluid">
-          <div class="page-header-content">
-            <h1 class="title">{{$main->name}}</h1>
-            {{$main->excerpt}}
-          </div>
-        </div>
-      </header>
-    </a>
-    <div class="content-divider">
-      <div class="container-fluid">
-        <h2 class="home-title">Articles</h2>
+    <header class="home-header">
+      <div class="main-article-wrapper">
+        <a href="{{route('article', $main->slug)}}">
+          <article id="m_{{$main->id}}" class="article-single">
+            <header class="article-single-header">
+              <div class="container-fluid">
+                <h1 class="article-single-title">{{$main->name}}</h1>
+                <p class="article-single-excerpt">{{$main->excerpt}}</p>
+                <div class="tags">
+                  @if (!empty($main->tags))
+                    @foreach ($main->tags as $tag)
+                      <a href="#">
+                        <span class="tag" style="background-color: #{{$tag->colour}};">{{$tag->name}}</span>
+                      </a>
+                    @endforeach
+                  @endif
+                </div>
+                <div class="article-single-thumbnail" style="background: url('{{isset($main->thumbnailImage) ? $main->thumbnailImage->url : ''}}') no-repeat; background-size: cover !important;"></div>
+              </div>
+            </header>
+          </article>
+        </a>
       </div>
-    </div>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="home-content col-sm-9">
-          @if (isset($articles))
-            <div class="row clearfix">
-              @foreach ($articles as $article)
-                <a href="{{route('article', $article->slug)}}">
-                  <div class="article-block col-sm-6 col-md-4">
-                    <div class="article-block-thumbnail">
-                      <img id="{{$article->id}}" src="{{isset($article->thumbnailImage) ? $article->thumbnailImage->url : ''}}" alt="{{$article->name}}" />
+    </header>
+    <section class="home-content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="latest col-md-3 col-sm-12">
+            @if (!empty($latest))
+              <div class="row">
+                @foreach ($latest as $l)
+                  <a href="{{route('article', $l->slug)}}">
+                    <article id="l_{{$l->id}}" class="article-latest col-xs-12">
+                      <header>
+                        <div class="title">
+                          <h3>{{$l->name}}</h3>
+                        </div>
+                        <div class="excerpt">
+                          <p>{{$l->excerpt}}</p>
+                        </div>
+                      </header>
+                    </article>
+                  </a>
+                @endforeach
+              </div>
+            @endif
+          </div>
+          <div class="popular col-md-5 col-sm-8">
+            @if (!empty($popular))
+              @foreach ($popular as $p)
+                <a href="{{route('article', $p->slug)}}">
+                  <article id="p_{{$p->id}}" class="article-popular">
+                    <header>
+                      <div class="title">
+                        <h3>{{$p->name}}</h3>
+                      </div>
+                    </header>
+                    <div class="thumbnail">
+                      <img src="{{isset($p->thumbnailImage) ? $p->thumbnailImage->url : ''}}" alt="{{isset($p->thumbnailImage) ? $p->thumbnailImage->name : ''}}">
                     </div>
-                    <h3 class="article-block-title">
-                      {{$article->name}}
-                    </h3>
-                    <div class="article-block-content">
-                      {{$article->excerpt}}
-                    </div>
-                    <div class="article-block-meta">
-                      {{$article->created_at}}
-                    </div>
-                  </div>
+                  </article>
                 </a>
               @endforeach
-            </div>
-          @endif
+            @endif
+          </div>
+          <div class="popular col-md-4 col-sm-4">
+            @if (!empty($popular))
+              @foreach ($popular as $p)
+                <a href="{{route('article', $p->slug)}}">
+                  <article id="p_{{$p->id}}" class="article-popular">
+                    <header>
+                      <div class="title">
+                        <h3>{{$p->name}}</h3>
+                      </div>
+                    </header>
+                    <div class="thumbnail">
+                      <img src="{{isset($p->thumbnailImage) ? $p->thumbnailImage->url : ''}}" alt="{{isset($p->thumbnailImage) ? $p->thumbnailImage->name : ''}}">
+                    </div>
+                  </article>
+                </a>
+              @endforeach
+            @endif
+          </div>
         </div>
-        <aside id="sidebar" class="col-sm-3">
-          @include('partials.sidebar', ['blockTitle' => 'Latest articles:'])
-        </aside>
       </div>
-    </div>
+    </section>
   </div>
 
 @endsection

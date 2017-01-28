@@ -8,6 +8,8 @@ use App\Http\Requests;
 
 use App\Article;
 
+use App\Tag;
+
 class ArticlesController extends Controller
 {
 
@@ -20,15 +22,16 @@ class ArticlesController extends Controller
     if (!is_numeric($id)) {
       $article = Article::where('slug', '=', $id)->published()->firstOrFail();
     } else {
-      $article = Article::findOrFail($id)->published();
+      $article = Article::published()->findOrFail($id);
     }
+    $tags = Tag::get();
     $title = $article->name;
     $currentOption = [
       'name' => 'Article',
       'routeName' => 'article-edit',
       'id' => $article->id
     ];
-    return view('article-single', compact('currentOption','title','article','ajax'));
+    return view('article-single', compact('currentOption','title','tags','article','ajax'));
   }
 
   public function addHit(Request $request, $id) {
