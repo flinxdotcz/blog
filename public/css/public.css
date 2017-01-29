@@ -166,19 +166,19 @@ a {
       border: 0;
       border-radius: 0;
       height: 200px; }
-  .show-page .show-page-body .user .user-all {
+  .show-page .show-page-body .user .user-all a {
     font-size: .75em;
     color: #999; }
-    .show-page .show-page-body .user .user-all h3 {
+    .show-page .show-page-body .user .user-all a h3 {
       color: #555;
       font-size: 1.2em; }
-    .show-page .show-page-body .user .user-all .single {
-      margin-top: 15px;
-      padding: 5px 15px;
-      height: 75px;
-      background-color: #e1e1e1; }
-      .show-page .show-page-body .user .user-all .single:nth-child(odd) {
-        background-color: #eee; }
+  .show-page .show-page-body .user .user-all .single {
+    margin-top: 15px;
+    padding: 5px 15px;
+    height: 75px;
+    background-color: #e1e1e1; }
+    .show-page .show-page-body .user .user-all .single:nth-child(odd) {
+      background-color: #eee; }
 
 #sidebar {
   font-size: .85em;

@@ -214,11 +214,13 @@ a {
         }
       }
       .user-all {
-        font-size: .75em;
-        color: $gray-medium;
-        h3 {
-          color: $gray-dark;
-          font-size: 1.2em;
+        a {
+          font-size: .75em;
+          color: $gray-medium;
+          h3 {
+            color: $gray-dark;
+            font-size: 1.2em;
+          }
         }
         .single {
           margin-top: 15px;
