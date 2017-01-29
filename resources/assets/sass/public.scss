@@ -64,13 +64,23 @@ a {
   }
 }
 .main-article-wrapper {
-  height: 200px;
-  background-color: $gray-medium;
+  min-height: 200px;
 }
 .article-single {
   position: relative;
   z-index: 1;
   height: 100%;
+  &.shown-single {
+    .article-single-header {
+      min-height: 300px;
+      h1 {
+        font-size: 3.2em;
+      }
+      .article-single-meta {
+        font-size: 1em;
+      }
+    }
+  }
   .article-single-header {
     position: relative;
     width: 100%;
@@ -78,17 +88,21 @@ a {
     z-index: 3;
     padding: 10px 0;
     text-shadow: 0 0 .005px $black;
-    color: white;
+    background-color: $gray-medium;
     color: $white;
+    .text-wrap {
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+    }
     a {
       color: $white;
       &:hover {
         text-decoration: none;
-        text-shadow: 0 0 0;
       }
     }
     .tags {
-      padding: 15px 0 0 0;
+      padding: 15px 0;
       .tag {
         border: 0px solid transparent;
         border-radius: 12.5px;
@@ -242,6 +256,9 @@ a {
     padding: 0 0 15px 15px;
     margin-right: -15px;
   }
+  .related, .trending, .latest {
+    background-color: $gray-light;
+  }
   h2.sidebar-title {
     display: none;
     &.data-fetched {
@@ -271,6 +288,9 @@ a {
   background-color: $gray-light;
   color: $black;
   font-size: 1em;
+  .trending, .popular {
+    padding-bottom: 30px;
+  }
   h3 {
     font-size: 1.5em;
   }
@@ -292,6 +312,13 @@ a {
     &:hover {
       color: $main-colour;
     }
+    &:last-child {
+      article {
+        > header {
+          border: none;
+        }
+      }
+    }
   }
   .item {
     > header {
@@ -299,8 +326,7 @@ a {
     }
   }
 }
-.popular, .related {
-  padding-bottom: 30px;
+.popular, .related, .trending {
   background-color: $white;
   color: $gray-dark;
   a {
@@ -313,13 +339,16 @@ a {
     }
   }
   .item {
-    padding: 15px;
+    padding: 15px 0;
   }
 }
 .content {
   h2 {
     font-size: 1em;
     color: darken($gray-light, 20%);
+    @media only screen and (max-width: 767px) {
+      padding-top: 15px;
+    }
   }
 }
 .footer-main {

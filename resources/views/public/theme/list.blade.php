@@ -12,9 +12,9 @@
       <section class="tag-list-content">
         <div class="container-fluid">
           <div class="row">
-            <div class="popular content col-sm-6">
-              @if (!empty($tag->articles))
-                <h2>RELATED</h2>
+            <div class="related content col-sm-6">
+              <h2>RELATED</h2>
+              @if (!empty($tag->articles->count()))
                 @foreach ($tag->articles as $a)
                   <a href="{{route('article', $a->slug)}}">
                     <article id="p_{{$a->id}}" class="item">
@@ -29,6 +29,9 @@
                     </article>
                   </a>
                 @endforeach
+              @else
+                <br />
+                <p>No articles.</p>
               @endif
             </div>
             <div id="sidebar" class="tag-list-sidebar col-sm-3">

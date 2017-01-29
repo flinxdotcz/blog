@@ -26,7 +26,7 @@
                 <p><strong>BIO:</strong> {{$user->bio}}</p>
               </div>
               <div class="related content">
-                @if (!empty($user->articles))
+                @if (!empty($user->articles->count()))
                   <br />
                   <h2>NEW</h2>
                   <a href="{{route('article', $user->articles->first()->slug)}}">
@@ -59,6 +59,7 @@
                     </div>
                   </div>
                 @else
+                  <br />
                   <p>No articles.</p>
                 @endif
               </div>

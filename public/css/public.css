@@ -43,13 +43,18 @@ a {
     background-color: #111; }
 
 .main-article-wrapper {
-  height: 200px;
-  background-color: #999; }
+  min-height: 200px; }
 
 .article-single {
   position: relative;
   z-index: 1;
   height: 100%; }
+  .article-single.shown-single .article-single-header {
+    min-height: 300px; }
+    .article-single.shown-single .article-single-header h1 {
+      font-size: 3.2em; }
+    .article-single.shown-single .article-single-header .article-single-meta {
+      font-size: 1em; }
   .article-single .article-single-header {
     position: relative;
     width: 100%;
@@ -57,15 +62,18 @@ a {
     z-index: 3;
     padding: 10px 0;
     text-shadow: 0 0 0.005px #111;
-    color: white;
+    background-color: #999;
     color: #fff; }
+    .article-single .article-single-header .text-wrap {
+      position: absolute;
+      width: 100%;
+      bottom: 0; }
     .article-single .article-single-header a {
       color: #fff; }
       .article-single .article-single-header a:hover {
-        text-decoration: none;
-        text-shadow: 0 0 0; }
+        text-decoration: none; }
     .article-single .article-single-header .tags {
-      padding: 15px 0 0 0; }
+      padding: 15px 0; }
       .article-single .article-single-header .tags .tag {
         border: 0px solid transparent;
         border-radius: 12.5px;
@@ -187,6 +195,8 @@ a {
     #sidebar {
       padding: 0 0 15px 15px;
       margin-right: -15px; } }
+  #sidebar .related, #sidebar .trending, #sidebar .latest {
+    background-color: #eee; }
   #sidebar h2.sidebar-title {
     display: none; }
     #sidebar h2.sidebar-title.data-fetched {
@@ -206,6 +216,8 @@ a {
   background-color: #eee;
   color: #111;
   font-size: 1em; }
+  .home-content .trending, .home-content .popular {
+    padding-bottom: 30px; }
   .home-content h3 {
     font-size: 1.5em; }
   .home-content a {
@@ -222,25 +234,29 @@ a {
     color: #555; }
     .latest a:hover {
       color: #0cd345; }
+    .latest a:last-child article > header {
+      border: none; }
   .latest .item > header {
     border-bottom: 1px solid #c8c8c8; }
 
-.popular, .related {
-  padding-bottom: 30px;
+.popular, .related, .trending {
   background-color: #fff;
   color: #555; }
-  .popular a, .related a {
+  .popular a, .related a, .trending a {
     color: #555; }
-    .popular a:hover, .related a:hover {
+    .popular a:hover, .related a:hover, .trending a:hover {
       color: #0cd345; }
-      .popular a:hover p, .related a:hover p {
+      .popular a:hover p, .related a:hover p, .trending a:hover p {
         color: #555; }
-  .popular .item, .related .item {
-    padding: 15px; }
+  .popular .item, .related .item, .trending .item {
+    padding: 15px 0; }
 
 .content h2 {
   font-size: 1em;
   color: #bbbbbb; }
+  @media only screen and (max-width: 767px) {
+    .content h2 {
+      padding-top: 15px; } }
 
 .footer-main {
   padding: 30px 0 30px 0;

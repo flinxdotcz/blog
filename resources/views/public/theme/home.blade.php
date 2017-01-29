@@ -8,16 +8,18 @@
           <article id="m_{{$main->id}}" class="article-single">
             <header class="article-single-header">
               <div class="container-fluid">
-                <h1 class="article-single-title">{{$main->name}}</h1>
-                <p class="article-single-excerpt">{{$main->excerpt}}</p>
-                <div class="tags">
-                  @if (!empty($main->tags))
-                    @foreach ($main->tags as $tag)
-                      <a href="{{route('tag', $tag->slug)}}">
-                        <span class="tag" style="background-color: #{{$tag->colour}};">{{$tag->name}}</span>
-                      </a>
-                    @endforeach
-                  @endif
+                <div class="text-wrap">
+                  <h1 class="article-single-title">{{$main->name}}</h1>
+                  <p class="article-single-excerpt">{{$main->excerpt}}</p>
+                  <div class="tags">
+                    @if (!empty($main->tags))
+                      @foreach ($main->tags as $tag)
+                        <a href="{{route('tag', $tag->slug)}}">
+                          <span class="tag" style="background-color: #{{$tag->colour}};">{{$tag->name}}</span>
+                        </a>
+                      @endforeach
+                    @endif
+                  </div>
                 </div>
                 <div class="article-single-thumbnail" style="background: url('{{isset($main->thumbnailImage) ? $main->thumbnailImage->url : ''}}') no-repeat; background-size: cover !important; background-position-y: 50%;"></div>
               </div>
@@ -50,9 +52,9 @@
               </div>
             @endif
           </div>
-          <div class="popular content col-md-5 col-sm-8">
+          <div class="trending content col-md-5 col-sm-8">
             @if (!empty($popular))
-              <h2>TRENDING</h2>
+              <h2>NOW TRENDING</h2>
               @foreach ($popular as $p)
                 <a href="{{route('article', $p->slug)}}">
                   <article id="p_{{$p->id}}" class="item">
