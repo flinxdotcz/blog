@@ -19,7 +19,11 @@ class ArticlesController extends Controller
 
   public function show(Request $request, $id) {
     if (!$request->session()->exists($id)) {
-      $hit = Article::findOrFail($id);
+      if (!is_numeric($id)) {
+        $hit = Article::where('slug', '=', $id)->firstOrFail();
+      } else {
+        $hit = Article::findOrFail($id);
+      }
       $hit->hits++;
       $hit->save();
       $request->session()->put($id);
