@@ -19,7 +19,7 @@
                     @endforeach
                   @endif
                 </div>
-                <div class="article-single-thumbnail" style="background: url('{{isset($main->thumbnailImage) ? $main->thumbnailImage->url : ''}}') no-repeat; background-size: cover !important;"></div>
+                <div class="article-single-thumbnail" style="background: url('{{isset($main->thumbnailImage) ? $main->thumbnailImage->url : ''}}') no-repeat; background-size: cover !important; background-position-y: 50%;"></div>
               </div>
             </header>
           </article>
@@ -29,12 +29,13 @@
     <section class="home-content">
       <div class="container-fluid">
         <div class="row">
-          <div class="latest col-md-3 col-sm-12">
+          <div class="latest content col-md-3 col-sm-12">
             @if (!empty($latest))
+              <h2>LATEST</h2>
               <div class="row">
                 @foreach ($latest as $l)
                   <a href="{{route('article', $l->slug)}}">
-                    <article id="l_{{$l->id}}" class="article-latest col-xs-12">
+                    <article id="l_{{$l->id}}" class="item col-xs-12">
                       <header>
                         <div class="title">
                           <h3>{{$l->name}}</h3>
@@ -49,11 +50,12 @@
               </div>
             @endif
           </div>
-          <div class="popular col-md-5 col-sm-8">
+          <div class="popular content col-md-5 col-sm-8">
             @if (!empty($popular))
+              <h2>TRENDING</h2>
               @foreach ($popular as $p)
                 <a href="{{route('article', $p->slug)}}">
-                  <article id="p_{{$p->id}}" class="article-popular">
+                  <article id="p_{{$p->id}}" class="item">
                     <header>
                       <div class="title">
                         <h3>{{$p->name}}</h3>
@@ -67,11 +69,12 @@
               @endforeach
             @endif
           </div>
-          <div class="popular col-md-4 col-sm-4">
+          <div class="popular content col-md-4 col-sm-4">
             @if (!empty($popular))
+              <h2>POPULAR</h2>
               @foreach ($popular as $p)
                 <a href="{{route('article', $p->slug)}}">
-                  <article id="p_{{$p->id}}" class="article-popular">
+                  <article id="p_{{$p->id}}" class="item">
                     <header>
                       <div class="title">
                         <h3>{{$p->name}}</h3>

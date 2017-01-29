@@ -74,6 +74,7 @@ function feedSidebar(url) {
       console.log(arguments);
     },
     success: function(data){
+     $('#sidebar .sidebar-title').addClass('data-fetched');
      $.each(data, function(i, article){
       $('#sidebar').append("\
         <div class='article-single'>\
@@ -95,7 +96,6 @@ function feedSidebar(url) {
         </div>\
       ");
      });
-     resizeThumbnail($('.article-single-thumbnail'));
     }
   });
 }
@@ -109,62 +109,5 @@ function equalHeight(el) {
   });
   $(el).height(biggest);
 }
-
-// function resizeThumbnail(item,x,y) {
-//   x = x || 1;
-//   y = y || 1;
-//   var smaller;
-//   x > y ? smaller = x : smaller = y;
-//   x = x/smaller;
-//   y = y/smaller;
-//   var img = $(item).find('img'),
-//       elX = $(item).width(),
-//       elY = $(item).width(),
-//       imgX = img.width(),
-//       imgY = img.height();
-//   item.width(elX * x);
-//   item.height(elY * y);
-//   switch (true) {
-//     case x > y:
-//       switch (true) {
-//         case imgX > imgY:
-//           img.css({width: (elX * x)+'px',height: 'auto',marginTop: '-'+(imgY-elY*y)/2+'px'});
-//           break;
-//         case imgX == imgY:
-//           img.css({width: (elX * x)+'px',height: 'auto',marginTop: '-'+(imgY-elY*y)+'px'});
-//           break;
-//         case imgX < imgY:
-//           img.css({width: 'auto',height: (elY * y)+'px'});
-//           break;
-//       }
-//       break;
-//     case x == y:
-//       switch (true) {
-//         case imgX > imgY:
-//           img.css({width: 'auto',height: (elY * y)+'px'});
-//           break;
-//         case imgX == imgY:
-//           img.css({width: (elX * x)+'px',height: (elY * y)+'px'});
-//           break;
-//         case imgX < imgY:
-//           img.css({width: (elX * x)+'px',height: 'auto'});
-//           break;
-//       }
-//       break;
-//     case x < y:
-//       switch (true) {
-//         case imgX > imgY:
-//           img.css({width: 'auto',height: (elY * y)+'px'});
-//           break;
-//         case imgX == imgY:
-//           img.css({width: (elX * x)+'px',height: 'auto'});
-//           break;
-//         case imgX < imgY:
-//           img.css({width: (elX * x)+'px',height: 'auto'});
-//           break;
-//       }
-//       break;
-//   }
-// }
 
 //# sourceMappingURL=public-bundle.js.map

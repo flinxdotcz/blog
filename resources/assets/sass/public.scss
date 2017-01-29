@@ -2,6 +2,7 @@
 @import "typography";
 
 body {
+  line-height: 1.6em;
   background-color: $gray-light;
   color: $gray-dark;
 }
@@ -14,6 +15,15 @@ a {
   color: $main-colour;
   &:focus {
     text-decoration: none;
+  }
+}
+.thumbnail {
+  min-height: 100px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  img {
+    width: 100%;
   }
 }
 .main-navigation {
@@ -67,12 +77,14 @@ a {
     min-height: 200px;
     z-index: 3;
     padding: 10px 0;
+    text-shadow: 0 0 .005px $black;
     color: white;
     color: $white;
     a {
       color: $white;
       &:hover {
         text-decoration: none;
+        text-shadow: 0 0 0;
       }
     }
     .tags {
@@ -85,10 +97,11 @@ a {
         height: 25px;
         font-size: 15px;
         line-height: 15px;
+        background-color: $main-colour;
+        box-shadow: 0 0 .05px $black;
       }
     }
     .article-single-meta {
-      padding: 15px 0 0 0;
       font-size: .85em;
       .date {
         display: inline-block;
@@ -112,6 +125,7 @@ a {
           width: 25px;
           border-radius: 12.5px;
           height: 25px;
+          box-shadow: 0 0 .05px $black;
         }
       }
     }
@@ -130,7 +144,7 @@ a {
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(0,0,0, .4);
+        background-color: rgba(0,0,0, .25);
       }
     }
   }
@@ -220,10 +234,17 @@ a {
   }
 }
 #sidebar {
+  font-size: .85em;
   padding: 15px;
   @media only screen and (min-width: 767px) {
-    padding: 15px 0 15px 15px;
+    padding: 0 0 15px 15px;
     margin-right: -15px;
+  }
+  h2.sidebar-title {
+    display: none;
+    &.data-fetched {
+      display: block;
+    }
   }
   .article-single {
     a {
@@ -262,21 +283,21 @@ a {
   }
 }
 .latest {
-  font-size: .8em;
   color: $gray-dark;
   a {
+    font-size: .8em;
     color: $gray-dark;
     &:hover {
       color: $main-colour;
     }
   }
-  .article-latest {
+  .item {
     > header {
       border-bottom: 1px solid darken($gray-light, 15%);
     }
   }
 }
-.popular {
+.popular, .related {
   padding-bottom: 30px;
   background-color: $white;
   color: $gray-dark;
@@ -289,16 +310,14 @@ a {
       }
     }
   }
-  .article-popular {
+  .item {
     padding: 15px;
-    .thumbnail {
-      margin: 0 7.5px;
-      padding: 0;
-      border: 0;
-      img {
-        width: 100%;
-      }
-    }
+  }
+}
+.content {
+  h2 {
+    font-size: 1em;
+    color: darken($gray-light, 20%);
   }
 }
 .footer-main {

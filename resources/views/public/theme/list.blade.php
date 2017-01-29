@@ -12,11 +12,12 @@
       <section class="tag-list-content">
         <div class="container-fluid">
           <div class="row">
-            <div class="popular col-sm-6">
+            <div class="popular content col-sm-6">
               @if (!empty($tag->articles))
+                <h2>RELATED</h2>
                 @foreach ($tag->articles as $a)
                   <a href="{{route('article', $a->slug)}}">
-                    <article id="p_{{$a->id}}" class="article-popular">
+                    <article id="p_{{$a->id}}" class="item">
                       <header>
                         <div class="title">
                           <h3>{{$a->name}}</h3>

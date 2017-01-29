@@ -5,16 +5,6 @@
     <header class="article-single-header">
       <div class="container-fluid">
         <h1 class="article-single-title">{{$article->name}}</h1>
-        <p class="article-single-excerpt">{{$article->excerpt}}</p>
-        <div class="tags">
-          @if (!empty($article->tags))
-            @foreach ($article->tags as $tag)
-              <a href="{{route('tag', $tag->slug)}}">
-                <span class="tag" style="background-color: #{{$tag->colour}};">{{$tag->name}}</span>
-              </a>
-            @endforeach
-          @endif
-        </div>
         <div class="article-single-meta">
           <div class="date">
             {{$article->published_at->diffForHumans()}}
@@ -28,7 +18,16 @@
             </a>
           </div>
         </div>
-        <div class="article-single-thumbnail" style="background: url('{{isset($article->thumbnailImage) ? $article->thumbnailImage->url : ''}}') no-repeat; background-size: cover !important;"></div>
+        <div class="tags">
+          @if (!empty($article->tags))
+            @foreach ($article->tags as $tag)
+              <a href="{{route('tag', $tag->slug)}}">
+                <span class="tag" style="background-color: #{{$tag->colour}};">{{$tag->name}}</span>
+              </a>
+            @endforeach
+          @endif
+        </div>
+        <div class="article-single-thumbnail" style="background: url('{{isset($article->thumbnailImage) ? $article->thumbnailImage->url : ''}}') no-repeat; background-size: cover !important; background-position-y: 50%;"></div>
       </div>
     </header>
     <div class="container-fluid">
