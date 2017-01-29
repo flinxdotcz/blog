@@ -17,7 +17,13 @@ class ArticlesController extends Controller
     \Carbon\Carbon::setlocale(env('APP_LOCALE', 'en'));
   }
 
-  public function show($id) {
+  public function show(Request $request, $id) {
+    if (!$request->session()->exists($id)) {
+      $hit = Article::findOrFail($id);
+      $hit->hits++;
+      $hit->save();
+      $request->session()->put($id);
+    }
     $ajax = true;
     if (!is_numeric($id)) {
       $article = Article::where('slug', '=', $id)->published()->firstOrFail();
@@ -32,15 +38,6 @@ class ArticlesController extends Controller
       'id' => $article->id
     ];
     return view('article-single', compact('currentOption','title','tags','article','ajax'));
-  }
-
-  public function addHit(Request $request, $id) {
-    if ($request->ajax()) {
-      $article = Article::findOrFail($id);
-      $article->hits++;
-      $article->save();
-      return response()->json('ok', 200);
-    }
   }
 
   public function getFeed(Request $request) {

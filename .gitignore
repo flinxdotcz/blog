@@ -1,5 +1,6 @@
 /database/seeds/GlobalSeeder.php
 /node_modules
+/resources/lang/cs
 /public/storage
 /public/images
 /storage/*.key
