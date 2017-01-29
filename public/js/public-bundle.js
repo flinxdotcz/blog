@@ -79,7 +79,7 @@ function feedSidebar(url) {
       $('#sidebar').append("\
         <div class='article-single'>\
           <a href='"+article.url+"'>\
-            <div class='article-single-thumbnail'>\
+            <div class='article-single-thumbnail thumbnail'>\
               <img src='"+article.thumbnail+"' alt='"+article.name+"'>\
             </div>\
           </a>\

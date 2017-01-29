@@ -52,27 +52,27 @@
               </div>
             @endif
           </div>
-          <div class="trending content col-md-5 col-sm-8">
-            @if (!empty($popular))
+          @if (isset($trending) && !empty($trending->count()))
+            <div class="trending content col-md-5 col-sm-8">
               <h2>NOW TRENDING</h2>
-              @foreach ($popular as $p)
-                <a href="{{route('article', $p->slug)}}">
-                  <article id="p_{{$p->id}}" class="item">
+              @foreach ($trending as $t)
+                <a href="{{route('article', $t->slug)}}">
+                  <article id="p_{{$t->id}}" class="item">
                     <header>
                       <div class="title">
-                        <h3>{{$p->name}}</h3>
+                        <h3>{{$t->name}}</h3>
                       </div>
                     </header>
                     <div class="thumbnail">
-                      <img src="{{isset($p->thumbnailImage) ? $p->thumbnailImage->url : ''}}" alt="{{isset($p->thumbnailImage) ? $p->thumbnailImage->name : ''}}">
+                      <img src="{{isset($t->thumbnailImage) ? $t->thumbnailImage->url : ''}}" alt="{{isset($t->thumbnailImage) ? $t->thumbnailImage->name : ''}}">
                     </div>
                   </article>
                 </a>
               @endforeach
-            @endif
           </div>
-          <div class="popular content col-md-4 col-sm-4">
-            @if (!empty($popular))
+          @endif
+          @if (isset($popular) && !empty($popular->count()))
+            <div class="popular content col-md-4 col-sm-4">
               <h2>POPULAR</h2>
               @foreach ($popular as $p)
                 <a href="{{route('article', $p->slug)}}">
@@ -88,8 +88,8 @@
                   </article>
                 </a>
               @endforeach
-            @endif
-          </div>
+            </div>
+          @endif
         </div>
       </div>
     </section>

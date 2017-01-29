@@ -42,7 +42,7 @@ class ArticlesController extends Controller
 
   public function getFeed(Request $request) {
     if ($request->ajax()) {
-      $articles = Article::take(5)->orderBy('published_at', 'desc')->published()->get();
+      $articles = Article::published()->take(5)->where('hits', '>', 0)->orderBy('hits', 'desc')->get();
       $data = clone $articles;
       foreach ($data as $article) {
         $article->replicate();

@@ -16,7 +16,9 @@ a {
   min-height: 100px;
   margin: 0;
   padding: 0;
-  border: 0; }
+  border: 0;
+  border-radius: 0;
+  background-color: #999; }
   .thumbnail img {
     width: 100%; }
 
