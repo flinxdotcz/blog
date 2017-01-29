@@ -163,6 +163,49 @@ a {
       }
     }
   }
+  .social {
+    position: relative;
+    margin-top: -30px;
+    width: 100%;
+    display: block;
+    padding: 5px 0;
+    background-color: $white;
+    .like-button {
+      &.liked {
+        color: $gray-dark;
+        .fa {
+          color: $gray-dark;
+        }
+        &:hover {
+          color: darken($gray-light, 15%);
+          cursor: not-allowed;
+          .fa {
+            color: darken($gray-light, 15%);
+          }
+        }
+      }
+    }
+    a {
+      font-style: normal;
+      color: $gray-medium;
+      font-size: 1.8em;
+      font-weight: 700;
+      line-height: 2em;
+      .fa {
+        padding-right: 5px;
+        line-height: 2em;
+        font-size: 0.75em;
+      }
+      &:not(:first-child) {
+        padding-left: 20px;
+      }
+      &:hover {
+        .fa {
+          color: $main-colour;
+        }
+      }
+    }
+  }
   .article-single-body {
     padding-top: 30px;
     padding-bottom: 45px;

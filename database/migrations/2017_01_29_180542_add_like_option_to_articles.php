@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSlugForTags extends Migration
+class AddLikeOptionToArticles extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class CreateSlugForTags extends Migration
      */
     public function up()
     {
-        Schema::table('tags', function (Blueprint $table) {
-            $table->string('slug')->nullable();
+        Schema::table('articles', function (Blueprint $table) {
+            $table->smallInteger('likes')->default(0);
         });
     }
 
@@ -25,8 +25,8 @@ class CreateSlugForTags extends Migration
      */
     public function down()
     {
-      Schema::table('tags', function (Blueprint $table) {
-          $table->dropColumn('slug');
-      });
+        Schema::table('articles', function (Blueprint $table) {
+            $table->dropColumn('likes');
+        });
     }
 }

@@ -20,6 +20,7 @@ Route::get('/tag/{id}', 'TagsController@show')->name('tag');
 Route::get('/' . trans('public/routes.article') . '/{id}', 'ArticlesController@show')->name('article');
 // Ajax
 Route::post('/feed', 'ArticlesController@getFeed');
+Route::post('/like', 'ArticlesController@setLike');
 // Admin routes
 Route::group([
   'middleware' => 'auth',

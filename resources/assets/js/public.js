@@ -87,6 +87,29 @@ function feedSidebar(url) {
     }
   });
 }
+function likeArticle(e, url, id) {
+  e.preventDefault();
+  var likeButton = $('.like-button'),
+      baseUrl = $('meta[name="_root"]').attr('content');
+  $.ajax({
+    type:'POST',
+    url: baseUrl + url,
+    data: {
+      _token: $('meta[name="_token"]').attr('content'),
+      id: id
+    },
+    error: function(req, e) {
+      console.log(e+':');
+      console.log(arguments);
+    },
+    success: function(data) {
+      console.log('Like sent.');
+      var element = $('#article-likes'),
+          likes = parseInt(element.html());
+      element.html(likes+1);
+    }
+  });
+}
 
 function equalHeight(el) {
   var biggest = null;

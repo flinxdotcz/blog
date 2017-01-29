@@ -35,6 +35,10 @@
     <div class="container-fluid">
       <div class="row">
         <div class="article-single-body col-sm-9">
+          <div class="social">
+            <a href="#" class="like-button" onclick="likeArticle(event,'/like','{{$article->id}}')"><i class="fa fa-heart"></i> <span id="article-likes">{{$article->likes}}</span></a>
+            {{-- <a href="#"><i class="fa fa-share"></i> 0</a> --}}
+          </div>
           {!!$article->content!!}
         </div>
         <div id="sidebar" class="article-single-sidebar col-sm-3">

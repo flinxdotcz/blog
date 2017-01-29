@@ -56,4 +56,17 @@ class ArticlesController extends Controller
       return response()->json($data, 200);
     }
   }
+  public function setLike(Request $request) {
+    $id = $request->id;
+    if ($request->ajax()) {
+      if (!$request->hasCookie('articleLike-' . $id)) {
+        $article = Article::findOrFail($id);
+        $article->likes++;
+        $article->save();
+        return response($article->likes)->cookie('articleLike-' . $id, true, time() + (365 * 24 * 60 * 60));
+      } else {
+        return response('Cannot like this item.', 501);
+      }
+    }
+  }
 }
