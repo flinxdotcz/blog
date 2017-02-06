@@ -13,16 +13,23 @@ class RolesSeeder extends Seeder
     {
       DB::table('roles')->insert([
         'name' => 'owner',
-        'permissions_sum' => 1023
+        'title' => 'Owner',
+        'permissions_sum' => 2047
       ]);
       DB::table('roles')->insert([
+        'title' => 'Admin',
         'name' => 'admin'
+        'permissions_sum' => 127
       ]);
       DB::table('roles')->insert([
+        'title' => 'Editor',
         'name' => 'editor'
+        'permissions_sum' => 31
       ]);
       DB::table('roles')->insert([
+        'title' => 'User',
         'name' => 'user'
+        'permissions_sum' => 8
       ]);
     }
 }

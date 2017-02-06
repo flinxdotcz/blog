@@ -17,6 +17,7 @@ class CreatePermissionsTable extends Migration
             $table->increments('id');
             $table->smallInteger('bit')->unsigned()->default(1);
             $table->string('name')->unique();
+            $table->string('title')->nullable();
         });
     }
 

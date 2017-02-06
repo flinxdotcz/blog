@@ -4,7 +4,8 @@ return [
 
   'users' => [
     'label' => 'Users',
-    'list' => 'All Users'
+    'list' => 'All Users',
+    'permissions' => 'Roles and Permissions'
   ],
   'articles' => [
     'label' => 'Articles',

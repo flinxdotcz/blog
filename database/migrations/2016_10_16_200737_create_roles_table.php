@@ -17,6 +17,7 @@ class CreateRolesTable extends Migration
             $table->increments('id');
             $table->smallInteger('permissions_sum')->unsigned()->default(0);
             $table->string('name');
+            $table->string('title')->nullable();
         });
     }
 

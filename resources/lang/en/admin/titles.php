@@ -8,6 +8,11 @@ return [
     'edit' => 'Edit User'
   ],
 
+  'permissions' => [
+    'index' => 'Roles and Permissions',
+    'show' => 'N/A'
+  ],
+
   'articles' => [
     'index' => 'Articles',
     'show' => 'N/A',

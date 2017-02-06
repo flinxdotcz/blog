@@ -79,6 +79,11 @@ return [
       'success' => 'Image successfully deleted.',
       'error' => 'Cannot delete this image.'
     ]
+  ],
+  'permissions' => [
+    'edit' => [
+      'submit' => 'Update Permissions'
+    ]
   ]
 
 ];

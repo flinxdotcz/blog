@@ -70,6 +70,12 @@ Route::group([
     Route::group(['middleware' => 'role-access:image-delete'], function() {
       Route::delete('image/{id}', 'ImagesController@destroy');
     });
+    // Roles and permissions
+    Route::group(['middleware' => 'role-access:permissions-edit'], function() {
+      Route::get('permissions', 'PermissionsController@index');
+      Route::put('permissions', 'PermissionsController@update');
+    });
+
   // Tags
   Route::get('tags', 'TagsController@index');
   Route::get('tag/{id}', 'TagsController@show');
