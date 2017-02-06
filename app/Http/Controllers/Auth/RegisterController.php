@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -62,13 +61,14 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        if (!User::first()) {
+        $user = \App\User::first();
+        if (is_null($user)) {
           $roleId = 1;
         } else {
-          $roleId = 2;
+          $roleId = \App\Role::get()->where('name', '=', 'user')->first()->id;
         }
 
-        return User::create([
+        return \App\User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'role_id' => $roleId,
