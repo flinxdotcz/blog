@@ -12,7 +12,7 @@ class TagsController extends Controller
 {
   public function show($id) {
     $ajax = true;
-    $tags = Tag::get();
+    $tags = Tag::displayed()->orderBy('order')->get();
     if (!is_numeric($id)) {
       $tag = Tag::where('slug', '=', $id)->firstOrFail();
     } else {

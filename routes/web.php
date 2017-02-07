@@ -24,7 +24,8 @@ Route::post('/like', 'ArticlesController@setLike');
 // Admin routes
 Route::group([
   'prefix' => 'admin',
-  'namespace' => 'Admin'
+  'namespace' => 'Admin',
+  'middleware' => 'auth'
   ], function() {
   Route::get('/', function() { return redirect()->action('\App\Http\Controllers\Admin\ArticlesController@index'); })->name('admin');
   // Role restricted
