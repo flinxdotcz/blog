@@ -27,6 +27,21 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function hasPermissionTo($permission) {
+      $permBitsSum = $this->role->permissions_sum;
+      $bit = 1;
+      $permIds = [];
+      for ($i=0; $bit < $permBitsSum + 1; $i++) {
+        $i === 0 ? $bit = 1 : $bit = $bit * 2;
+        if ($permBitsSum & $bit) {
+          array_push($permIds, $i + 1);
+        }
+      }
+      $permission = \App\Permission::get()->where('name', '=', strtolower($permission))->first();
+      return in_array($permission->id, $permIds);
+
+    }
+
     public function hasRole($role) {
       return $this->role->name == $role;
     }

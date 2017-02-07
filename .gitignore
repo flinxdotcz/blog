@@ -3,7 +3,7 @@
 /resources/lang/cs
 /public/storage
 /public/images
-/storage/*.key
+/storage
 /vendor
 /.idea
 Homestead.json

@@ -29,11 +29,13 @@
                   {{trans('admin/navbar.articles.list')}}
                 </a>
               </li>
-              <li>
-                <a class="item" href="{{action('\App\Http\Controllers\Admin\ArticlesController@create')}}">
-                  {{trans('admin/navbar.articles.new')}}
-                </a>
-              </li>
+              @if (Auth::user()->hasPermissionTo('article-create'))
+                <li>
+                  <a class="item" href="{{action('\App\Http\Controllers\Admin\ArticlesController@create')}}">
+                    {{trans('admin/navbar.articles.new')}}
+                  </a>
+                </li>
+              @endif
             </ul>
           </li>
           <li class="dropdown">
@@ -44,11 +46,13 @@
                   {{trans('admin/navbar.tags.list')}}
                 </a>
               </li>
-              <li>
-                <a class="item" href="{{action('\App\Http\Controllers\Admin\TagsController@create')}}">
-                  {{trans('admin/navbar.tags.new')}}
-                </a>
-              </li>
+              @if (Auth::user()->hasPermissionTo('tag-create'))
+                <li>
+                  <a class="item" href="{{action('\App\Http\Controllers\Admin\TagsController@create')}}">
+                    {{trans('admin/navbar.tags.new')}}
+                  </a>
+                </li>
+              @endif
             </ul>
           </li>
           <li class="dropdown">
@@ -59,13 +63,16 @@
                   {{trans('admin/navbar.users.list')}}
                 </a>
               </li>
-              <li>
-                <a class="item" href="{{action('\App\Http\Controllers\Admin\PermissionsController@index')}}">
-                  {{trans('admin/navbar.users.permissions')}}
-                </a>
-              </li>
+              @if (Auth::user()->hasPermissionTo('permissions-edit'))
+                <li>
+                  <a class="item" href="{{action('\App\Http\Controllers\Admin\PermissionsController@index')}}">
+                    {{trans('admin/navbar.users.permissions')}}
+                  </a>
+                </li>
+              @endif
             </ul>
           </li>
+          @if (Auth::user()->hasPermissionTo('image-create'))
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{trans('admin/navbar.images.label')}} <span class="caret"></span></a>
             <ul class="dropdown-menu">
@@ -74,32 +81,39 @@
                   {{trans('admin/navbar.images.list')}}
                 </a>
               </li>
-              <li>
-                <a class="item" href="{{action('\App\Http\Controllers\Admin\ImagesController@create')}}">
-                  {{trans('admin/navbar.images.new')}}
-                </a>
-              </li>
+                <li>
+                  <a class="item" href="{{action('\App\Http\Controllers\Admin\ImagesController@create')}}">
+                    {{trans('admin/navbar.images.new')}}
+                  </a>
+                </li>
             </ul>
           </li>
+          @endif
         @else
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{trans('admin/navbar.create-new.label')}} <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li>
-                <a class="item" href="{{action('\App\Http\Controllers\Admin\ArticlesController@create')}}">
-                  {{trans('admin/navbar.articles.new')}}
-                </a>
-              </li>
-              <li>
-                <a class="item" href="{{action('\App\Http\Controllers\Admin\TagsController@create')}}">
-                  {{trans('admin/navbar.tags.new')}}
-                </a>
-              </li>
-              <li>
-                <a class="item" href="{{action('\App\Http\Controllers\Admin\ImagesController@create')}}">
-                  {{trans('admin/navbar.images.new')}}
-                </a>
-              </li>
+              @if (Auth::user()->hasPermissionTo('article-create'))
+                <li>
+                  <a class="item" href="{{action('\App\Http\Controllers\Admin\ArticlesController@create')}}">
+                    {{trans('admin/navbar.articles.new')}}
+                  </a>
+                </li>
+              @endif
+              @if (Auth::user()->hasPermissionTo('tag-create'))
+                <li>
+                  <a class="item" href="{{action('\App\Http\Controllers\Admin\TagsController@create')}}">
+                    {{trans('admin/navbar.tags.new')}}
+                  </a>
+                </li>
+              @endif
+              @if (Auth::user()->hasPermissionTo('image-create'))
+                <li>
+                  <a class="item" href="{{action('\App\Http\Controllers\Admin\ImagesController@create')}}">
+                    {{trans('admin/navbar.images.new')}}
+                  </a>
+                </li>
+              @endif
             </ul>
           </li>
         @endif

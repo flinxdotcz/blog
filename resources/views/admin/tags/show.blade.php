@@ -26,9 +26,9 @@
             'message' => trans('admin/modals.tags.delete.message'),
             'approve' => trans('admin/modals.tags.delete.approve')
           ])
-          <button class="btn btn-danger deleteBtn">
-            {{trans('admin/contents.tags.show.delete')}}
-          </button>
+            <button class="btn btn-danger deleteBtn">
+              {{trans('admin/contents.tags.show.delete')}}
+            </button>
         </div>
       </div>
     </div>
