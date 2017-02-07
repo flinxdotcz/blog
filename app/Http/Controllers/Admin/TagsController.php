@@ -49,7 +49,7 @@ class TagsController extends Controller
     } else {
       $tag->isDisplayed = false;
     }
-    $tag->order = $request->input('order');
+    $tag->order = $request->input('order') || 0;
     $tag->slug = $tag->id;
     $tag->save();
     return redirect()->action('\App\Http\Controllers\Admin\TagsController@show', ['id' => $tag->id])->with('alert', 'success|'.trans('admin/forms.tags.edit.status'));
@@ -70,7 +70,7 @@ class TagsController extends Controller
     } else {
       $tag->isDisplayed = false;
     }
-    $tag->order = $request->input('order');
+    $tag->order = $request->input('order') || 0;
     $tag->save();
     $tag->slug = $tag->id;
     $tag->save();

@@ -28,7 +28,7 @@
           </div>
           <div class="form-group">
             {!! Form::label('order', trans('admin/forms.tags.create.order')) !!}
-            {!! Form::number('order', null, ['class' => 'form-control']) !!}
+            {!! Form::number('order', $tag->order, ['class' => 'form-control']) !!}
           </div>
           {!! Form::submit(trans('admin/forms.tags.edit.submit'), ['class' => 'btn btn-success submitBtn']) !!}
         {!! Form::close() !!}
