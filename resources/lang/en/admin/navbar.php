@@ -3,7 +3,7 @@
 return [
 
   'users' => [
-    'label' => 'Users',
+    'label' => 'Users & Roles',
     'list' => 'All Users',
     'permissions' => 'Roles and Permissions'
   ],

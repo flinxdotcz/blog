@@ -45,7 +45,7 @@ Route::group([
       Route::get('article/create', 'ArticlesController@create');
       Route::post('article', 'ArticlesController@store');
     });
-    Route::group(['middleware' => 'role-access:article-edit'], function() {
+    Route::group(['middleware' => 'role-access:article-edit,articles'], function() {
       Route::get('article/{id}/edit', 'ArticlesController@edit')->name('article-edit');
       Route::patch('article/{id}', 'ArticlesController@update');
       Route::put('article/{id}', 'ArticlesController@update');
@@ -54,7 +54,7 @@ Route::group([
       Route::delete('article/{id}', 'ArticlesController@destroy');
     });
     //  User actions
-    Route::group(['middleware' => 'role-access:user-edit'], function() {
+    Route::group(['middleware' => 'role-access:user-edit,users'], function() {
       Route::get('profile/{id}/edit', 'UsersController@edit')->name('profile-edit');
       Route::put('profile/{id}', 'UsersController@update');
       Route::post('profile', 'UsersController@store');

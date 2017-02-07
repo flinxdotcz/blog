@@ -18,17 +18,17 @@ class RolesSeeder extends Seeder
       ]);
       DB::table('roles')->insert([
         'title' => 'Admin',
-        'name' => 'admin'
+        'name' => 'admin',
         'permissions_sum' => 127
       ]);
       DB::table('roles')->insert([
         'title' => 'Editor',
-        'name' => 'editor'
+        'name' => 'editor',
         'permissions_sum' => 31
       ]);
       DB::table('roles')->insert([
         'title' => 'User',
-        'name' => 'user'
+        'name' => 'user',
         'permissions_sum' => 8
       ]);
     }
