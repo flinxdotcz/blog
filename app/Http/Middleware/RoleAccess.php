@@ -21,7 +21,21 @@ class RoleAccess
         $owner = false;
         if (!is_null($request->id) && !is_null($table)) {
           $resource = DB::table(strtolower($table))->where('id', intval($request->id))->first();
-          is_null($resource) ? $owner = false : $owner = true;
+          if (!is_null($resource)) {
+            if (property_exists($resource, 'user_id')) {
+              if ($resource->user_id === $request->user()->id) {
+                if (strtolower($table) === 'user-delete') {
+                  back()->with('alert', 'warning|'.trans('admin/forms.errors.unauthorized'));
+                } else {
+                  $owner = true;
+                }
+              }
+            } elseif (intval($request->id) === $request->user()->id) {
+              $owner = true;
+            } else {
+             $owner = false;
+            }
+          }
         }
         if (!$owner) {
           if (!empty($action) && !is_null($request->user())) {
@@ -36,7 +50,7 @@ class RoleAccess
             }
             $permission = Permission::get()->where('name', '=', strtolower($action))->first();
             if (is_null($permission) || !in_array($permission->id, $permIds)) {
-              abort('404');
+              return back()->with('alert', 'warning|'.trans('admin/forms.errors.unauthorized'));
             }
           }
         }
