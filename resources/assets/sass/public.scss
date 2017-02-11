@@ -33,23 +33,22 @@ a {
   margin: 0;
   box-shadow: none;
   border-radius: 0;
-  background-color: $black;
-  color: $white;
+  background-color: $white;
+  color: $black;
   a {
     color: $main-colour;
   }
   .navbar-header {
     a.navbar-brand {
-      color: $white;
+      color: $black;
       font-weight: 700;
-      border-bottom: 2px solid $main-colour;
     }
   }
   .navbar-collapse {
     .navbar-nav {
       li {
         a {
-          color: $white;
+          color: $black;
           text-shadow: 0, 0, .005px darken($main-colour, 35%);
           &:hover {
             color: $main-colour;
@@ -128,7 +127,7 @@ a {
           font-style: italic;
           color: $gray-light;
           &:hover {
-            color: $main-colour;
+            color: $gray-medium;
           }
         }
         .author-avatar {
@@ -218,9 +217,16 @@ a {
 }
 .show-page {
   .show-page-header {
-    height: 80px;
-    background-color: lighten($black, 5%);
-    color: $white;
+    height: 50px;
+    margin: 15px 0;
+    background-color: $gray-light;
+    border-top: 1px solid $gray-light;
+    color: $gray-medium;
+    h1, h2, h3 {
+      margin: 0;
+      line-height: 50px;
+      font-size: 30px;
+    }
     .user-avatar {
       position: relative;
       height: 60px;
@@ -396,8 +402,9 @@ a {
   }
 }
 .footer-main {
+  margin-top: 15px;
   padding: 30px 0 30px 0;
-  background-color: $black;
+  background-color: $white;
   color: $gray-medium;
   font-size: .85em;
   a:hover {

@@ -8,7 +8,7 @@ body {
     padding: 0 30px; } }
 
 a {
-  color: #0cd345; }
+  color: #3358FF; }
   a:focus {
     text-decoration: none; }
 
@@ -27,21 +27,20 @@ a {
   margin: 0;
   box-shadow: none;
   border-radius: 0;
-  background-color: #111;
-  color: #fff; }
+  background-color: #fff;
+  color: #111; }
   .main-navigation a {
-    color: #0cd345; }
+    color: #3358FF; }
   .main-navigation .navbar-header a.navbar-brand {
-    color: #fff;
-    font-weight: 700;
-    border-bottom: 2px solid #0cd345; }
+    color: #111;
+    font-weight: 700; }
   .main-navigation .navbar-collapse .navbar-nav li a {
-    color: #fff;
-    text-shadow: 0, 0, 0.005px #022a0e; }
+    color: #111;
+    text-shadow: 0, 0, 0.005px #001780; }
     .main-navigation .navbar-collapse .navbar-nav li a:hover {
-      color: #0cd345; }
+      color: #3358FF; }
   .main-navigation .navbar-collapse .navbar-nav li.active a {
-    color: #0cd345;
+    color: #3358FF;
     background-color: #111; }
 
 .main-article-wrapper {
@@ -83,7 +82,7 @@ a {
         height: 25px;
         font-size: 15px;
         line-height: 15px;
-        background-color: #0cd345;
+        background-color: #3358FF;
         box-shadow: 0 0 0.05px #111; }
     .article-single .article-single-header .article-single-meta {
       font-size: .85em; }
@@ -96,7 +95,7 @@ a {
           font-style: italic;
           color: #eee; }
           .article-single .article-single-header .article-single-meta .author a:hover {
-            color: #0cd345; }
+            color: #999; }
         .article-single .article-single-header .article-single-meta .author .author-avatar {
           position: absolute;
           right: -32.5px;
@@ -152,7 +151,7 @@ a {
       .article-single .social a:not(:first-child) {
         padding-left: 20px; }
       .article-single .social a:hover .fa {
-        color: #0cd345; }
+        color: #3358FF; }
   .article-single .article-single-body {
     padding-top: 30px;
     padding-bottom: 45px;
@@ -163,9 +162,15 @@ a {
         margin-left: -30px; } }
 
 .show-page .show-page-header {
-  height: 80px;
-  background-color: #1e1e1e;
-  color: #fff; }
+  height: 50px;
+  margin: 15px 0;
+  background-color: #eee;
+  border-top: 1px solid #eee;
+  color: #999; }
+  .show-page .show-page-header h1, .show-page .show-page-header h2, .show-page .show-page-header h3 {
+    margin: 0;
+    line-height: 50px;
+    font-size: 30px; }
   .show-page .show-page-header .user-avatar {
     position: relative;
     height: 60px;
@@ -177,7 +182,7 @@ a {
       width: 50px;
       height: 50px;
       border-radius: 25px;
-      background-color: #0cd345; }
+      background-color: #3358FF; }
 
 .show-page .show-page-body {
   padding-top: 30px;
@@ -191,9 +196,9 @@ a {
     color: #555;
     text-decoration: none; }
     .show-page .show-page-body .user a:hover {
-      color: #0bbb3d; }
+      color: #1a43ff; }
       .show-page .show-page-body .user a:hover h3 {
-        color: #0bbb3d; }
+        color: #1a43ff; }
   .show-page .show-page-body .user .user-bio strong {
     font-size: .8em; }
   .show-page .show-page-body .user .user-latest {
@@ -235,7 +240,7 @@ a {
   #sidebar .article-single a {
     color: #555; }
     #sidebar .article-single a:hover {
-      color: #0bbb3d;
+      color: #1a43ff;
       text-decoration: none; }
   #sidebar .article-single .article-single-thumbnail {
     position: relative;
@@ -254,9 +259,9 @@ a {
   .home-content a {
     text-decoration: none; }
     .home-content a:hover {
-      color: #0bbb3d; }
+      color: #1a43ff; }
       .home-content a:hover h1, .home-content a:hover h2, .home-content a:hover h3, .home-content a:hover p {
-        color: #0bbb3d; }
+        color: #1a43ff; }
 
 .latest {
   color: #555; }
@@ -264,7 +269,7 @@ a {
     font-size: .8em;
     color: #555; }
     .latest a:hover {
-      color: #0cd345; }
+      color: #3358FF; }
     .latest a:last-child article > header {
       border: none; }
   .latest .item > header {
@@ -276,7 +281,7 @@ a {
   .popular a, .related a, .trending a {
     color: #555; }
     .popular a:hover, .related a:hover, .trending a:hover {
-      color: #0cd345; }
+      color: #3358FF; }
       .popular a:hover p, .related a:hover p, .trending a:hover p {
         color: #555; }
   .popular .item, .related .item, .trending .item {
@@ -290,11 +295,12 @@ a {
       padding-top: 15px; } }
 
 .footer-main {
+  margin-top: 15px;
   padding: 30px 0 30px 0;
-  background-color: #111;
+  background-color: #fff;
   color: #999;
   font-size: .85em; }
   .footer-main a:hover {
-    color: #0bbb3d; }
+    color: #1a43ff; }
 
 /*# sourceMappingURL=public.css.map */

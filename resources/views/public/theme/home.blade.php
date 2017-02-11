@@ -32,7 +32,7 @@
       <div class="container-fluid">
         <div class="row">
           <div class="latest content col-md-3 col-sm-12">
-            @if (!empty($latest))
+            @if (!empty($latest->count()))
               <h2>LATEST</h2>
               <div class="row">
                 @foreach ($latest as $l)
